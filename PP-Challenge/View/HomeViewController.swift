@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import ReactiveSwift
 
-class ViewController: UIViewController {
+
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

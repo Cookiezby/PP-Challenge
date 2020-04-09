@@ -3,16 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3F7E34243F157F00CD544C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F7E33243F157F00CD544C /* Currency.swift */; };
+		2C3F7E37243F164C00CD544C /* live.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C3F7E36243F164C00CD544C /* live.json */; };
 		41B125C4F3AB6A3E3A7F2BFA /* Pods_PP_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0489E2F52471952086DD5A69 /* Pods_PP_Challenge.framework */; };
 		6FC513140A9B6A4664BC38EF /* Pods_PP_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35203329C5EF8F9BC2D47D5 /* Pods_PP_ChallengeTests.framework */; };
 		EA248AF64AE7897855CC7197 /* Pods_PP_Challenge_PP_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDF1AD613DC8A372AE83FF98 /* Pods_PP_Challenge_PP_ChallengeUITests.framework */; };
 		FAA8D299243DA8C3007963AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D298243DA8C3007963AB /* AppDelegate.swift */; };
 		FAA8D29B243DA8C3007963AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D29A243DA8C3007963AB /* SceneDelegate.swift */; };
-		FAA8D29D243DA8C3007963AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D29C243DA8C3007963AB /* ViewController.swift */; };
+		FAA8D29D243DA8C3007963AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D29C243DA8C3007963AB /* HomeViewController.swift */; };
 		FAA8D2A0243DA8C3007963AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D29E243DA8C3007963AB /* Main.storyboard */; };
 		FAA8D2A2243DA8C5007963AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2A1243DA8C5007963AB /* Assets.xcassets */; };
 		FAA8D2A5243DA8C5007963AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2A3243DA8C5007963AB /* LaunchScreen.storyboard */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		0489E2F52471952086DD5A69 /* Pods_PP_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PP_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3F7E33243F157F00CD544C /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		2C3F7E36243F164C00CD544C /* live.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = live.json; sourceTree = SOURCE_ROOT; };
 		87A7B0F99934B2BCBA3B22DC /* Pods-PP-ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PP-ChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-PP-ChallengeTests/Pods-PP-ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6298E13D4BC232E76AE67ED /* Pods-PP-Challenge-PP-ChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PP-Challenge-PP-ChallengeUITests.release.xcconfig"; path = "Target Support Files/Pods-PP-Challenge-PP-ChallengeUITests/Pods-PP-Challenge-PP-ChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B21898020CCCEEB9D3D85C1C /* Pods-PP-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PP-Challenge.release.xcconfig"; path = "Target Support Files/Pods-PP-Challenge/Pods-PP-Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -48,7 +52,7 @@
 		FAA8D295243DA8C3007963AB /* PP-Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PP-Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA8D298243DA8C3007963AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAA8D29A243DA8C3007963AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FAA8D29C243DA8C3007963AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAA8D29C243DA8C3007963AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FAA8D29F243DA8C3007963AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAA8D2A1243DA8C5007963AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAA8D2A4243DA8C5007963AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,6 +95,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C3F7E2C243F14A400CD544C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C3F7E2E243F14B000CD544C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C3F7E2F243F14B500CD544C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAA8D29C243DA8C3007963AB /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C3F7E30243F152B00CD544C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FAA8D29E243DA8C3007963AB /* Main.storyboard */,
+				FAA8D2A3243DA8C5007963AB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		2C3F7E31243F153500CD544C /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FAA8D2A6243DA8C5007963AB /* Info.plist */,
+				FAA8D2A1243DA8C5007963AB /* Assets.xcassets */,
+				FAA8D298243DA8C3007963AB /* AppDelegate.swift */,
+				FAA8D29A243DA8C3007963AB /* SceneDelegate.swift */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		2C3F7E32243F157200CD544C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				2C3F7E33243F157F00CD544C /* Currency.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		2C3F7E35243F164200CD544C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				2C3F7E36243F164C00CD544C /* live.json */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		3E99E8300EE00DF25DAD7346 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +173,6 @@
 				FBCED089D7ACD849E88AB584 /* Pods-PP-ChallengeTests.debug.xcconfig */,
 				87A7B0F99934B2BCBA3B22DC /* Pods-PP-ChallengeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,13 +201,13 @@
 		FAA8D297243DA8C3007963AB /* PP-Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				FAA8D298243DA8C3007963AB /* AppDelegate.swift */,
-				FAA8D29A243DA8C3007963AB /* SceneDelegate.swift */,
-				FAA8D29C243DA8C3007963AB /* ViewController.swift */,
-				FAA8D29E243DA8C3007963AB /* Main.storyboard */,
-				FAA8D2A1243DA8C5007963AB /* Assets.xcassets */,
-				FAA8D2A3243DA8C5007963AB /* LaunchScreen.storyboard */,
-				FAA8D2A6243DA8C5007963AB /* Info.plist */,
+				2C3F7E35243F164200CD544C /* Mock */,
+				2C3F7E32243F157200CD544C /* Entity */,
+				2C3F7E31243F153500CD544C /* SupportFiles */,
+				2C3F7E30243F152B00CD544C /* Storyboard */,
+				2C3F7E2F243F14B500CD544C /* View */,
+				2C3F7E2E243F14B000CD544C /* ViewModel */,
+				2C3F7E2C243F14A400CD544C /* Model */,
 			);
 			path = "PP-Challenge";
 			sourceTree = "<group>";
@@ -279,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA8D2A5243DA8C5007963AB /* LaunchScreen.storyboard in Resources */,
+				2C3F7E37243F164C00CD544C /* live.json in Resources */,
 				FAA8D2A2243DA8C5007963AB /* Assets.xcassets in Resources */,
 				FAA8D2A0243DA8C3007963AB /* Main.storyboard in Resources */,
 			);
@@ -408,7 +470,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA8D29D243DA8C3007963AB /* ViewController.swift in Sources */,
+				2C3F7E34243F157F00CD544C /* Currency.swift in Sources */,
+				FAA8D29D243DA8C3007963AB /* HomeViewController.swift in Sources */,
 				FAA8D299243DA8C3007963AB /* AppDelegate.swift in Sources */,
 				FAA8D29B243DA8C3007963AB /* SceneDelegate.swift in Sources */,
 			);
@@ -585,7 +648,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 979H9V6KLT;
 				INFOPLIST_FILE = "PP-Challenge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -603,7 +668,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 979H9V6KLT;
 				INFOPLIST_FILE = "PP-Challenge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
