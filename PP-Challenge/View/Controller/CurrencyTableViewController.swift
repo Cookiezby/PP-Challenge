@@ -13,7 +13,7 @@ import ReactiveSwift
 class CurrencyTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var viewModel = CurrencyTableViewModel(service: MockCurrencyListServiceImp())
+    private var viewModel = CurrencyTableViewModel()
     private var currencies = MutableProperty<[Currency]>([])
     
     override func viewDidLoad() {

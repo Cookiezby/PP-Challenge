@@ -1,5 +1,5 @@
 //
-//  CurrentListService.swift
+//  APIService.swift
 //  PP-Challenge
 //
 //  Created by 朱冰一 on 2020/04/11.
@@ -8,11 +8,20 @@
 
 import Foundation
 
-protocol CurrencyListService {
-    func fetchCurrencies(completed: (Result<[Currency], Error>) -> Void)
-}
+class APIService {
+    var lastUpdateTime: Double?
+    var currencies: [Currency] = []
+    var usdRate: CurrencyRate?
 
-class MockCurrencyListServiceImp: CurrencyListService {
+    func fetchUSDCurrencyRate(completed: (Result<CurrencyRate, Error>) -> Void) {
+        let url = Bundle.main.url(forResource: "live", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let json = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
+        guard let quotes = json["quotes"] as? [String: Double] else { return }
+        guard let source = json["source"] as? String else { return }
+        let rate = CurrencyRate(source: source, quotes: quotes)
+        completed(.success(rate))
+    }
     
     func fetchCurrencies(completed: (Result<[Currency], Error>) -> Void) {
         let url = Bundle.main.url(forResource: "list", withExtension: "json")!

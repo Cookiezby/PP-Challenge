@@ -13,10 +13,12 @@ class CurrencyRateViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
+    private let viewModel = CurrencyRateViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        viewModel.fetchRate()
     }
     
     func setupTableView() {
