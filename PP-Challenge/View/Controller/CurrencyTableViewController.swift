@@ -28,7 +28,7 @@ class CurrencyTableViewController: UIViewController {
     }
     
     func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.description())
+        tableView.register(UINib(nibName: "CurrencyTableViewCell", bundle: nil), forCellReuseIdentifier: CurrencyTableViewCell.description())
     }
 }
 
@@ -42,7 +42,8 @@ extension CurrencyTableViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.description())!
+        let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.description(), for: indexPath) as! CurrencyTableViewCell
+        cell.setCurrency(currencies.value[indexPath.row])
         return cell
     }
 }

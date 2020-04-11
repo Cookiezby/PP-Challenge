@@ -11,14 +11,36 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTableView()
+    }
+    
+    func setupTableView() {
+         tableView.register(UINib(nibName: "CurrencyRateTableViewCell", bundle: nil), forCellReuseIdentifier: CurrencyRateTableViewCell.description())
     }
 
     @IBAction func currencyButtonTapped(_ sender: Any) {
         guard let vc = UIStoryboard.load(.currencyList) as? CurrencyTableViewController else { return }
-        present(vc, animated: true, completion: nil)
+        let navi = UINavigationController(rootViewController: vc)
+        present(navi, animated: true, completion: nil)
     }
 }
 
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyRateTableViewCell.description(), for: indexPath) as! CurrencyRateTableViewCell
+        return cell
+    }
+}
