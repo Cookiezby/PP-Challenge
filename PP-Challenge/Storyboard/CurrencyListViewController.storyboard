@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NDa-Gf-nrv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Currency-->
+        <scene sceneID="f1g-Pe-bif">
+            <objects>
+                <viewController storyboardIdentifier="CurrencyListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NDa-Gf-nrv" customClass="CurrencyListViewController" customModule="PP_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pLA-NJ-Lr7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hMP-fd-IHN">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="NDa-Gf-nrv" id="Lir-QQ-sfi"/>
+                                    <outlet property="delegate" destination="NDa-Gf-nrv" id="BSg-ze-pMc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hMP-fd-IHN" secondAttribute="bottom" id="7qM-KO-5DJ"/>
+                            <constraint firstItem="hMP-fd-IHN" firstAttribute="trailing" secondItem="jv5-ck-pf3" secondAttribute="trailing" id="KUa-tb-kb1"/>
+                            <constraint firstItem="hMP-fd-IHN" firstAttribute="top" secondItem="jv5-ck-pf3" secondAttribute="top" constant="44" id="RVc-2Q-4Y8"/>
+                            <constraint firstItem="hMP-fd-IHN" firstAttribute="leading" secondItem="jv5-ck-pf3" secondAttribute="leading" id="vEO-TC-T9Y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jv5-ck-pf3"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Currency" id="xvu-Dn-zTB"/>
+                    <connections>
+                        <outlet property="tableView" destination="hMP-fd-IHN" id="rYt-tX-Dqo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prG-jg-lPi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="333.33333333333337" y="-58.928571428571423"/>
+        </scene>
+    </scenes>
+</document>

@@ -13,9 +13,12 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
-
+    @IBAction func currencyButtonTapped(_ sender: Any) {
+        guard let vc = UIStoryboard.load(.currencyList) as? CurrencyListViewController else { return }
+        present(vc, animated: true, completion: nil)
+    }
 }
 
