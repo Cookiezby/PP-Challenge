@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func currencyButtonTapped(_ sender: Any) {
-        guard let vc = UIStoryboard.load(.currencyList) as? CurrencyListViewController else { return }
+        guard let vc = UIStoryboard.load(.currencyList) as? CurrencyTableViewController else { return }
         present(vc, animated: true, completion: nil)
     }
 }

@@ -20,9 +20,14 @@
 		FAA8D2A5243DA8C5007963AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2A3243DA8C5007963AB /* LaunchScreen.storyboard */; };
 		FAA8D2B0243DA8C5007963AB /* PP_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2AF243DA8C5007963AB /* PP_ChallengeTests.swift */; };
 		FAA8D2BB243DA8C5007963AB /* PP_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2BA243DA8C5007963AB /* PP_ChallengeUITests.swift */; };
-		FAA8D2CB24418E68007963AB /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2CA24418E68007963AB /* CurrencyListViewController.swift */; };
+		FAA8D2CB24418E68007963AB /* CurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2CA24418E68007963AB /* CurrencyTableViewController.swift */; };
 		FAA8D2CF2441934C007963AB /* CurrencyListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2CE2441934C007963AB /* CurrencyListViewController.storyboard */; };
 		FAA8D2D42441972E007963AB /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2D32441972E007963AB /* Storyboard.swift */; };
+		FAA8D2D82441CD7E007963AB /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2D72441CD7E007963AB /* list.json */; };
+		FAA8D2DB2441CDA7007963AB /* CurrencyTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2DA2441CDA7007963AB /* CurrencyTableViewModel.swift */; };
+		FAA8D2DF2441CF2F007963AB /* CurrentListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2DE2441CF2F007963AB /* CurrentListService.swift */; };
+		FAA8D2E42441E36C007963AB /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2E22441E36C007963AB /* CurrencyTableViewCell.swift */; };
+		FAA8D2E52441E36C007963AB /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2E32441E36C007963AB /* CurrencyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +71,14 @@
 		FAA8D2B6243DA8C5007963AB /* PP-ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PP-ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA8D2BA243DA8C5007963AB /* PP_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PP_ChallengeUITests.swift; sourceTree = "<group>"; };
 		FAA8D2BC243DA8C5007963AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAA8D2CA24418E68007963AB /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
+		FAA8D2CA24418E68007963AB /* CurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewController.swift; sourceTree = "<group>"; };
 		FAA8D2CE2441934C007963AB /* CurrencyListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrencyListViewController.storyboard; sourceTree = "<group>"; };
 		FAA8D2D32441972E007963AB /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		FAA8D2D72441CD7E007963AB /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = SOURCE_ROOT; };
+		FAA8D2DA2441CDA7007963AB /* CurrencyTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewModel.swift; sourceTree = "<group>"; };
+		FAA8D2DE2441CF2F007963AB /* CurrentListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentListService.swift; sourceTree = "<group>"; };
+		FAA8D2E22441E36C007963AB /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		FAA8D2E32441E36C007963AB /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
 		FBCED089D7ACD849E88AB584 /* Pods-PP-ChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PP-ChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-PP-ChallengeTests/Pods-PP-ChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FDF1AD613DC8A372AE83FF98 /* Pods_PP_Challenge_PP_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PP_Challenge_PP_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,8 +114,8 @@
 		2C3F7E2F243F14B500CD544C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FAA8D29C243DA8C3007963AB /* HomeViewController.swift */,
-				FAA8D2CA24418E68007963AB /* CurrencyListViewController.swift */,
+				FAA8D2E12441E33F007963AB /* View */,
+				FAA8D2E02441E336007963AB /* Controller */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,11 +190,13 @@
 		FAA8D297243DA8C3007963AB /* PP-Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				FAA8D2DD2441CF1C007963AB /* Service */,
 				FAA8D2D6244199B9007963AB /* Mock */,
 				FAA8D2D0244196B7007963AB /* Util */,
 				2C3F7E32243F157200CD544C /* Entity */,
 				2C3F7E30243F152B00CD544C /* Storyboard */,
 				2C3F7E2F243F14B500CD544C /* View */,
+				FAA8D2D92441CD8E007963AB /* ViewModel */,
 			);
 			path = "PP-Challenge";
 			sourceTree = "<group>";
@@ -218,9 +230,44 @@
 		FAA8D2D6244199B9007963AB /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				FAA8D2D72441CD7E007963AB /* list.json */,
 				2C3F7E36243F164C00CD544C /* live.json */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		FAA8D2D92441CD8E007963AB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FAA8D2DA2441CDA7007963AB /* CurrencyTableViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FAA8D2DD2441CF1C007963AB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FAA8D2DE2441CF2F007963AB /* CurrentListService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FAA8D2E02441E336007963AB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FAA8D29C243DA8C3007963AB /* HomeViewController.swift */,
+				FAA8D2CA24418E68007963AB /* CurrencyTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FAA8D2E12441E33F007963AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAA8D2E22441E36C007963AB /* CurrencyTableViewCell.swift */,
+				FAA8D2E32441E36C007963AB /* CurrencyTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,11 +379,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA8D2E52441E36C007963AB /* CurrencyTableViewCell.xib in Resources */,
 				FAA8D2A5243DA8C5007963AB /* LaunchScreen.storyboard in Resources */,
 				FAA8D2CF2441934C007963AB /* CurrencyListViewController.storyboard in Resources */,
 				2C3F7E37243F164C00CD544C /* live.json in Resources */,
 				FAA8D2A2243DA8C5007963AB /* Assets.xcassets in Resources */,
 				FAA8D2A0243DA8C3007963AB /* Main.storyboard in Resources */,
+				FAA8D2D82441CD7E007963AB /* list.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,12 +513,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA8D2CB24418E68007963AB /* CurrencyListViewController.swift in Sources */,
+				FAA8D2CB24418E68007963AB /* CurrencyTableViewController.swift in Sources */,
 				2C3F7E34243F157F00CD544C /* Currency.swift in Sources */,
 				FAA8D29D243DA8C3007963AB /* HomeViewController.swift in Sources */,
+				FAA8D2DF2441CF2F007963AB /* CurrentListService.swift in Sources */,
 				FAA8D299243DA8C3007963AB /* AppDelegate.swift in Sources */,
 				FAA8D2D42441972E007963AB /* Storyboard.swift in Sources */,
 				FAA8D29B243DA8C3007963AB /* SceneDelegate.swift in Sources */,
+				FAA8D2E42441E36C007963AB /* CurrencyTableViewCell.swift in Sources */,
+				FAA8D2DB2441CDA7007963AB /* CurrencyTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

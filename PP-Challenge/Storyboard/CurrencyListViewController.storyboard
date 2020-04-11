@@ -10,11 +10,28 @@
         <!--Currency-->
         <scene sceneID="f1g-Pe-bif">
             <objects>
-                <viewController storyboardIdentifier="CurrencyListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NDa-Gf-nrv" customClass="CurrencyListViewController" customModule="PP_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrencyListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NDa-Gf-nrv" customClass="CurrencyTableViewController" customModule="PP_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pLA-NJ-Lr7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHF-ze-hET">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XH9-0b-E0P">
+                                        <rect key="frame" x="171.5" y="11.5" width="71" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="XH9-0b-E0P" firstAttribute="centerY" secondItem="JHF-ze-hET" secondAttribute="centerY" id="U34-3q-YSx"/>
+                                    <constraint firstItem="XH9-0b-E0P" firstAttribute="centerX" secondItem="JHF-ze-hET" secondAttribute="centerX" id="fmE-lm-ezK"/>
+                                    <constraint firstAttribute="height" constant="44" id="oke-6J-SJH"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hMP-fd-IHN">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -23,12 +40,25 @@
                                     <outlet property="delegate" destination="NDa-Gf-nrv" id="BSg-ze-pMc"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1F-0D-6pU">
+                                <rect key="frame" x="0.0" y="87" width="414" height="1"/>
+                                <color key="backgroundColor" red="0.2437855303" green="0.25351694229999999" blue="0.33334279059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="5Iq-lP-rCz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hMP-fd-IHN" secondAttribute="bottom" id="7qM-KO-5DJ"/>
+                            <constraint firstItem="JHF-ze-hET" firstAttribute="leading" secondItem="jv5-ck-pf3" secondAttribute="leading" id="HBQ-Y0-pWy"/>
+                            <constraint firstItem="jv5-ck-pf3" firstAttribute="trailing" secondItem="JHF-ze-hET" secondAttribute="trailing" id="K22-Fa-sPQ"/>
                             <constraint firstItem="hMP-fd-IHN" firstAttribute="trailing" secondItem="jv5-ck-pf3" secondAttribute="trailing" id="KUa-tb-kb1"/>
                             <constraint firstItem="hMP-fd-IHN" firstAttribute="top" secondItem="jv5-ck-pf3" secondAttribute="top" constant="44" id="RVc-2Q-4Y8"/>
+                            <constraint firstItem="v1F-0D-6pU" firstAttribute="leading" secondItem="pLA-NJ-Lr7" secondAttribute="leading" id="TBG-Zy-hmG"/>
+                            <constraint firstItem="hMP-fd-IHN" firstAttribute="top" secondItem="v1F-0D-6pU" secondAttribute="bottom" id="UYT-lL-1nt"/>
+                            <constraint firstItem="JHF-ze-hET" firstAttribute="top" secondItem="jv5-ck-pf3" secondAttribute="top" id="Z0y-WW-xBC"/>
+                            <constraint firstAttribute="trailing" secondItem="v1F-0D-6pU" secondAttribute="trailing" id="h6o-bE-xCq"/>
                             <constraint firstItem="hMP-fd-IHN" firstAttribute="leading" secondItem="jv5-ck-pf3" secondAttribute="leading" id="vEO-TC-T9Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jv5-ck-pf3"/>
