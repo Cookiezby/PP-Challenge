@@ -10,14 +10,19 @@ import Foundation
 
 struct CurrencyRate {
     var source: String
-    var quotes: [String: Double]
+    private(set) var quoteDictionary: [String: Double]
+    private(set) var quotes: [Quote]
     
     init(source: String, quotes: [String: Double]) {
         self.source = source
-        self.quotes = quotes
+        self.quoteDictionary = quotes
+        self.quotes = quotes.map{ (key, value) -> Quote in
+            Quote(key: key, value: value)
+        }
     }
-    
-    func getRate(target: String) -> Double {
-        return quotes[target]!
-    }
+}
+
+struct Quote {
+    var key: String
+    var value: Double
 }

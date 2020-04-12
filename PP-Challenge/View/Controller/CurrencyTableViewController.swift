@@ -20,7 +20,7 @@ class CurrencyTableViewController: UIViewController {
         super.viewDidLoad()
         bindViewModel()
         setupTableView()
-        viewModel.fetchCurrencies()
+       
     }
     
     func bindViewModel() {

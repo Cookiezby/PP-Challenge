@@ -9,6 +9,8 @@
 import Foundation
 
 class APIService {
+    static let shared = APIService()
+    
     var lastUpdateTime: Double?
     var currencies: [Currency] = []
     var usdRate: CurrencyRate?
@@ -19,7 +21,11 @@ class APIService {
         let json = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
         guard let quotes = json["quotes"] as? [String: Double] else { return }
         guard let source = json["source"] as? String else { return }
-        let rate = CurrencyRate(source: source, quotes: quotes)
+        var newQuotes: [String: Double] = [:]
+        for key in quotes.keys {
+            newQuotes[String(key.dropFirst(3))] = quotes[key]
+        }
+        let rate = CurrencyRate(source: source, quotes: newQuotes)
         completed(.success(rate))
     }
     

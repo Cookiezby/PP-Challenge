@@ -8,9 +8,22 @@
 
 import Foundation
 
-class RateCalculator {
-//    static func calculate(target: String, usdRate: Rate) -> Rate {
-//        
-//        
-//    }
+class CurrencyRateCalculator {
+    static func calculate(target: String, completed: (Result<CurrencyRate, Error>) -> Void) {
+        APIService.shared.fetchUSDCurrencyRate { (result) in
+            switch result {
+            case .success(let usdRate):
+                guard let quote = usdRate.quoteDictionary[target] else { return }
+                let multiple: Double = 1 / quote
+                var quotes: [String: Double] = [:]
+                for key in usdRate.quoteDictionary.keys {
+                    quotes[key] = usdRate.quoteDictionary[key]! * multiple
+                }
+                let targetRate = CurrencyRate(source: target, quotes: quotes)
+                completed(.success(targetRate))
+            case .failure:
+                break
+            }
+        }
+    }
 }
