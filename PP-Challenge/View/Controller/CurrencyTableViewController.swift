@@ -58,4 +58,10 @@ extension CurrencyTableViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 43
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.selectCurrency(currencies.value[indexPath.row])
+        dismiss(animated: true, completion: nil)
+    }
 }

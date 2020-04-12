@@ -15,7 +15,7 @@ class CurrencyRateTableViewCell: UITableViewCell {
     
     func setQuote(_ quote: Quote, amount: Double) {
         nameLabel.text = quote.key
-        numberLabel.text = "\(Double(round(quote.value * amount * 100) / 100))"
+        numberLabel.text = "\(Double(round(quote.value * amount * 1000) / 1000))"
     }
     
     override func awakeFromNib() {
@@ -28,5 +28,4 @@ class CurrencyRateTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }

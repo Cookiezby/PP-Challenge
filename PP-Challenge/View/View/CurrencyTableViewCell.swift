@@ -12,10 +12,12 @@ class CurrencyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var checkMark: UIImageView!
     
     func setCurrency(_ currency: Currency) {
+        checkMark.isHidden = DataManager.shared.currentCurrency != currency.name
         nameLabel.text = currency.name
-        descriptionLabel.text = currency.description
+        descriptionLabel.text = currency.detail
     }
     
     override func awakeFromNib() {

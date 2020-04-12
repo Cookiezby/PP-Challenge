@@ -47,6 +47,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="checkMark" destination="z6T-uz-UVd" id="V9Z-zf-S3P"/>
                 <outlet property="descriptionLabel" destination="hNa-85-LVN" id="j01-Xk-qZd"/>
                 <outlet property="nameLabel" destination="7BX-zp-Zaq" id="8Qe-XH-76K"/>
             </connections>

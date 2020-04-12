@@ -20,7 +20,7 @@ class MockCurrencyService: CurrencyService {
         let currencies = json["currencies"] as! [String: String]
         var result: [Currency] = []
         for key in currencies.keys {
-            result.append(Currency(name: key, description: currencies[key]!))
+            result.append(Currency(name: key, detail: currencies[key]!))
         }
         result.sort { $0.name < $1.name }
         completed(.success(result))

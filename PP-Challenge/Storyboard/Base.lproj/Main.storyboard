@@ -24,17 +24,17 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qMY-mp-xbB">
-                                <rect key="frame" x="83" y="76.5" width="313" height="34"/>
+                                <rect key="frame" x="88" y="76.5" width="308" height="34"/>
                                 <color key="tintColor" red="0.098039215690000001" green="0.1450980392" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="6XF-ck-cuH"/>
                                 </constraints>
                                 <color key="textColor" red="0.098039215686274508" green="0.14509803921568626" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LM1-6i-bCS">
-                                <rect key="frame" x="18" y="77" width="55" height="33"/>
+                                <rect key="frame" x="18" y="77" width="60" height="33"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Triangle" translatesAutoresizingMaskIntoConstraints="NO" id="E1g-AP-lAn">
                                         <rect key="frame" x="8" y="13.5" width="8" height="6"/>
@@ -44,7 +44,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLn-Yn-k7Z">
-                                        <rect key="frame" x="18" y="8.5" width="29" height="16"/>
+                                        <rect key="frame" x="22" y="8.5" width="28.5" height="16"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <color key="textColor" red="0.098039215690000001" green="0.1450980392" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -55,10 +55,10 @@
                                     <constraint firstItem="E1g-AP-lAn" firstAttribute="leading" secondItem="LM1-6i-bCS" secondAttribute="leading" constant="8" id="MqA-Uv-XLm"/>
                                     <constraint firstItem="CLn-Yn-k7Z" firstAttribute="centerY" secondItem="LM1-6i-bCS" secondAttribute="centerY" id="RPo-iI-eXb"/>
                                     <constraint firstItem="E1g-AP-lAn" firstAttribute="centerY" secondItem="LM1-6i-bCS" secondAttribute="centerY" id="kdW-BD-UDm"/>
-                                    <constraint firstItem="CLn-Yn-k7Z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="E1g-AP-lAn" secondAttribute="trailing" constant="2" id="l3u-02-ceU"/>
+                                    <constraint firstItem="CLn-Yn-k7Z" firstAttribute="leading" secondItem="E1g-AP-lAn" secondAttribute="trailing" constant="6" id="l3u-02-ceU"/>
                                     <constraint firstAttribute="height" constant="33" id="myT-h8-yNT"/>
-                                    <constraint firstAttribute="width" constant="55" id="sl9-uS-Xap"/>
-                                    <constraint firstAttribute="trailing" secondItem="CLn-Yn-k7Z" secondAttribute="trailing" constant="8" id="wf7-Ul-MMz"/>
+                                    <constraint firstAttribute="width" constant="60" id="sl9-uS-Xap"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CLn-Yn-k7Z" secondAttribute="trailing" id="wf7-Ul-MMz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXp-pr-aXb">
@@ -87,6 +87,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="currencyLabel" destination="CLn-Yn-k7Z" id="z2q-ih-uET"/>
                         <outlet property="selectCurrencyView" destination="LM1-6i-bCS" id="xcX-0p-QYK"/>
                         <outlet property="tableView" destination="sBm-eu-oVA" id="VLp-ey-RfR"/>
                         <outlet property="textField" destination="qMY-mp-xbB" id="wM3-jj-9FG"/>

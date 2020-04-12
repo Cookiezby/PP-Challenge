@@ -15,6 +15,7 @@ class CurrencyRateViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectCurrencyView: UIView!
+    @IBOutlet weak var currencyLabel: UILabel!
     
     private let viewModel = CurrencyRateViewModel(service: MockCurrencyRateService())
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
@@ -45,6 +46,11 @@ class CurrencyRateViewController: UIViewController {
             if let amount = Double(value) {
                 self.viewModel.updateAmount(amount)
             }
+        }
+        
+        viewModel.currentCurrency.signal.observeValues { [weak self] (text) in
+            guard let self = self else { return }
+            self.currencyLabel.text = text
         }
     }
     

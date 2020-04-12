@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct Currency {
+class Currency: NSObject {
     var name: String
-    var description: String
+    var detail: String
+    
+    init(name: String, detail: String) {
+        self.name = name
+        self.detail = detail
+        super.init()
+    }
 }

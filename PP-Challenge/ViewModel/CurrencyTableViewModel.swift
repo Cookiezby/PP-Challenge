@@ -40,5 +40,6 @@ class CurrencyTableViewModel: CurrencyTableViewModelOutput, CurrencyTableViewMod
     }
     
     func selectCurrency(_ currency: Currency) {
+        DataManager.shared.currentCurrency = currency.name
     }
 }
