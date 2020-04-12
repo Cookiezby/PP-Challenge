@@ -12,45 +12,77 @@ protocol CurrencyRateService {
     func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, Error>) -> Void)
 }
 
-class MockCurrencyRateService: CurrencyRateService {
-    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, Error>) -> Void) {
-        let url = Bundle.main.url(forResource: "live", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        let json = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
-        guard let quotes = json["quotes"] as? [String: Double] else { return }
-        guard let source = json["source"] as? String else { return }
-        var newQuotes: [String: Double] = [:]
-        for key in quotes.keys {
-            newQuotes[String(key.dropFirst(3))] = quotes[key]
-        }
-        let rate = CurrencyRate(source: source, quotes: newQuotes)
-        completed(.success(rate))
-    }
-}
-
-class CurrencyRateServiceImpl: CurrencyRateService {
-    
-    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, Error>) -> Void) {
-        guard let url = URL(string: Constants.rateUrl) else { return }
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
-            if let error = error {
-                completed(.failure(error))
-            }
-            let json = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
-            guard let quotes = json["quotes"] as? [String: Double] else { return }
-            guard let source = json["source"] as? String else { return }
+extension CurrencyRateService {
+    func decode(data: Data) -> CurrencyRate? {
+        do {
+            guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { return nil }
+            guard let quotes = json["quotes"] as? [String: Double] else { return nil }
+            guard let source = json["source"] as? String else { return nil }
             var newQuotes: [String: Double] = [:]
             for key in quotes.keys {
                 newQuotes[String(key.dropFirst(3))] = quotes[key]
             }
             let rate = CurrencyRate(source: source, quotes: newQuotes)
+            return rate
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+}
+
+class MockCurrencyRateService: CurrencyRateService {
+    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, Error>) -> Void) {
+        let url = Bundle.main.url(forResource: "live", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        if let rate = decode(data: data) {
             completed(.success(rate))
+        } else {
+            
+        }
+    }
+}
+
+class CurrencyRateServiceImpl: CurrencyRateService {
+    
+    private var lastUpdatedTime: Double? = nil
+    
+    init() {
+        lastUpdatedTime = UserDefaults.standard.value(forKey: UserDefaultsKey.lastUpdatedTime.rawValue) as? Double
+    }
+    
+    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, Error>) -> Void) {
+        if let lastUpdatedTime = lastUpdatedTime,
+            Date().timeIntervalSince1970 - lastUpdatedTime >= 30 * 60,
+            let jsonStr = UserDefaults.standard.value(forKeyPath: UserDefaultsKey.baseRate.rawValue) as? String,
+            let data = jsonStr.data(using: .utf8) {
+            if let rate = decode(data: data) {
+                completed(.success(rate))
+                return
+            }
+        }
+        
+        guard let url = URL(string: Constants.rateUrl) else { return }
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20)
+        let task = session.dataTask(with: request) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+            guard let data = data else { return }
+            if let error = error {
+                completed(.failure(error))
+                return
+            }
+            
+            if let rate = self.decode(data: data) {
+                UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: UserDefaultsKey.lastUpdatedTime.rawValue)
+                String(data: data, encoding: .utf8).map { UserDefaults.standard.set($0, forKey: UserDefaultsKey.baseRate.rawValue) }
+                UserDefaults.standard.synchronize()
+                completed(.success(rate))
+            } else {
+                
+            }
         }
         task.resume()
     }
-    
 }

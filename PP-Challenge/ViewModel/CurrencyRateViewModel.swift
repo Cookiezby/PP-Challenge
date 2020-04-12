@@ -22,7 +22,6 @@ protocol CurrencyRateViewModelOutput {
 
 class CurrencyRateViewModel: CurrencyRateViewModelInput, CurrencyRateViewModelOutput {
     private var service: CurrencyRateService
-    private var lastUpdated: Date? = nil
     var amount = MutableProperty<Double>(1)
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
     var currentCurrency = MutableProperty<String?>(nil)
@@ -38,7 +37,7 @@ class CurrencyRateViewModel: CurrencyRateViewModelInput, CurrencyRateViewModelOu
             case .success(let rate):
                 self.currencyRate.swap(rate)
                 self.currentCurrency.swap(rate.source)
-                self.lastUpdated = Date()
+                EnviromentData.shared.currentCurrency = rate.source
             case .failure:
                 break
             }
