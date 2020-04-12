@@ -8,10 +8,16 @@
 
 import Foundation
 
-class CurrencyRate: NSObject {
+struct CurrencyRate {
     var source: String
     private(set) var quoteDictionary: [String: Double]
     private(set) var quotes: [Quote]
+    
+    enum Key: String {
+        case sources
+        case quoteDictionary
+        case quotes
+    }
     
     init(source: String, quotes: [String: Double]) {
         self.source = source
@@ -21,11 +27,20 @@ class CurrencyRate: NSObject {
         }
         
         self.quotes.sort { $0.key < $1.key }
-        super.init()
     }
 }
 
 struct Quote {
     var key: String
     var value: Double
+    
+    enum Key: String {
+        case key
+        case value
+    }
+    
+    init(key: String, value: Double) {
+        self.key = key
+        self.value = value
+    }
 }

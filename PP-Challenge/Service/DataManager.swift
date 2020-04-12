@@ -19,12 +19,7 @@ enum DataKey: String {
 class DataManager {
     
     static let shared = DataManager()
-    
-    var lastUpdateTime: Date? = nil
-    /// free plan can only request use rate, so we use usd rate to calculate other currency's rate
-    var baseRate: CurrencyRate? = nil
     var currentCurrency: String? = nil
-    //var currencies = MutableProperty<[Currency]>([])
     
     init() {
 //        lastUpdateTime.signal.skipNil().observeValues { (date) in

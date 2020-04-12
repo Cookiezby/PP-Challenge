@@ -13,7 +13,7 @@ import ReactiveSwift
 class CurrencyTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var viewModel = CurrencyTableViewModel(service: MockCurrencyService())
+    private var viewModel = CurrencyTableViewModel(service: CurrencyServiceImpl())
     private var currencies = MutableProperty<[Currency]>([])
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class CurrencyTableViewController: UIViewController {
     
     func bindViewModel() {
         currencies <~ viewModel.currencies.signal
-        currencies.signal.observeValues { [weak self] _ in
+        currencies.signal.observe(on: UIScheduler()).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.tableView.reloadData()
         }
@@ -33,6 +33,7 @@ class CurrencyTableViewController: UIViewController {
     
     func setupTableView() {
         tableView.register(UINib(nibName: "CurrencyTableViewCell", bundle: nil), forCellReuseIdentifier: CurrencyTableViewCell.description())
+        tableView.tableFooterView = UIView()
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
