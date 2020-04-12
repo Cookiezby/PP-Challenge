@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CurrencyRate {
+class CurrencyRate: NSObject {
     var source: String
     private(set) var quoteDictionary: [String: Double]
     private(set) var quotes: [Quote]
@@ -20,9 +20,8 @@ struct CurrencyRate {
             Quote(key: key, value: value)
         }
         
-        self.quotes.sort { (a, b) -> Bool in
-            a.key < b.key
-        }
+        self.quotes.sort { $0.key < $1.key }
+        super.init()
     }
 }
 

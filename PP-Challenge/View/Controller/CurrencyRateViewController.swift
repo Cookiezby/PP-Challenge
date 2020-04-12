@@ -16,7 +16,7 @@ class CurrencyRateViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectCurrencyView: UIView!
     
-    private let viewModel = CurrencyRateViewModel()
+    private let viewModel = CurrencyRateViewModel(service: MockCurrencyRateService())
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
     
     override func viewDidLoad() {
@@ -121,7 +121,7 @@ extension CurrencyRateViewController: UITextFieldDelegate {
         }
         
         if dotCount == 1 {
-            if let strs = textField.text?.split(separator: "."), strs.count == 2, let last = strs.last, last.count >= 5 {
+            if let strs = textField.text?.split(separator: "."), strs.count == 2, let last = strs.last, last.count >= 2 {
                 return false
             }
         }

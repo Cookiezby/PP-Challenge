@@ -20,11 +20,16 @@ protocol CurrencyRateViewModelOutput {
 }
 
 class CurrencyRateViewModel: CurrencyRateViewModelInput, CurrencyRateViewModelOutput {
+    private var service: CurrencyRateService
     var amount = MutableProperty<Double>(1)
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
     
+    init(service: CurrencyRateService) {
+        self.service = service
+    }
+    
     func fetchRate() {
-        APIService.shared.fetchUSDCurrencyRate { [weak self] (result) in
+        service.fetchCurrencyBaseRate { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let rate):

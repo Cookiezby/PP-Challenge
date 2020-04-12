@@ -17,8 +17,10 @@
 		FAA12B702441ED5C00E33756 /* CurrencyRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B6F2441ED5C00E33756 /* CurrencyRateViewModel.swift */; };
 		FAA12B742441F6CD00E33756 /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B732441F6CD00E33756 /* CurrencyRate.swift */; };
 		FAA12B772441FF7700E33756 /* RateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B762441FF7700E33756 /* RateCalculator.swift */; };
-		FAA12B792442012D00E33756 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B782442012D00E33756 /* APIService.swift */; };
 		FAA12B7B2442E99900E33756 /* CALayer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B7A2442E99900E33756 /* CALayer+Ext.swift */; };
+		FAA12B7D2443009400E33756 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B7C2443009400E33756 /* DataManager.swift */; };
+		FAA12B7F2443077A00E33756 /* CurrencyRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B7E2443077A00E33756 /* CurrencyRateService.swift */; };
+		FAA12B812443078C00E33756 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B802443078C00E33756 /* CurrencyService.swift */; };
 		FAA8D299243DA8C3007963AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D298243DA8C3007963AB /* AppDelegate.swift */; };
 		FAA8D29B243DA8C3007963AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D29A243DA8C3007963AB /* SceneDelegate.swift */; };
 		FAA8D29D243DA8C3007963AB /* CurrencyRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D29C243DA8C3007963AB /* CurrencyRateViewController.swift */; };
@@ -68,8 +70,10 @@
 		FAA12B6F2441ED5C00E33756 /* CurrencyRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateViewModel.swift; sourceTree = "<group>"; };
 		FAA12B732441F6CD00E33756 /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
 		FAA12B762441FF7700E33756 /* RateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCalculator.swift; sourceTree = "<group>"; };
-		FAA12B782442012D00E33756 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		FAA12B7A2442E99900E33756 /* CALayer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Ext.swift"; sourceTree = "<group>"; };
+		FAA12B7C2443009400E33756 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FAA12B7E2443077A00E33756 /* CurrencyRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateService.swift; sourceTree = "<group>"; };
+		FAA12B802443078C00E33756 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 		FAA8D295243DA8C3007963AB /* PP-Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PP-Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA8D298243DA8C3007963AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAA8D29A243DA8C3007963AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,7 +267,9 @@
 		FAA8D2DD2441CF1C007963AB /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				FAA12B782442012D00E33756 /* APIService.swift */,
+				FAA12B7C2443009400E33756 /* DataManager.swift */,
+				FAA12B7E2443077A00E33756 /* CurrencyRateService.swift */,
+				FAA12B802443078C00E33756 /* CurrencyService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -533,7 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA12B6D2441EA8D00E33756 /* CurrencyRateTableViewCell.swift in Sources */,
-				FAA12B792442012D00E33756 /* APIService.swift in Sources */,
+				FAA12B7D2443009400E33756 /* DataManager.swift in Sources */,
 				FAA8D2CB24418E68007963AB /* CurrencyTableViewController.swift in Sources */,
 				2C3F7E34243F157F00CD544C /* Currency.swift in Sources */,
 				FAA12B772441FF7700E33756 /* RateCalculator.swift in Sources */,
@@ -543,6 +549,8 @@
 				FAA8D299243DA8C3007963AB /* AppDelegate.swift in Sources */,
 				FAA8D2D42441972E007963AB /* Storyboard.swift in Sources */,
 				FAA8D29B243DA8C3007963AB /* SceneDelegate.swift in Sources */,
+				FAA12B812443078C00E33756 /* CurrencyService.swift in Sources */,
+				FAA12B7F2443077A00E33756 /* CurrencyRateService.swift in Sources */,
 				FAA8D2E42441E36C007963AB /* CurrencyTableViewCell.swift in Sources */,
 				FAA12B702441ED5C00E33756 /* CurrencyRateViewModel.swift in Sources */,
 				FAA8D2DB2441CDA7007963AB /* CurrencyTableViewModel.swift in Sources */,

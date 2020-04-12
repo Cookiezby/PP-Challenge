@@ -10,7 +10,7 @@ import Foundation
 
 class CurrencyRateCalculator {
     static func calculate(target: String, completed: (Result<CurrencyRate, Error>) -> Void) {
-        APIService.shared.fetchUSDCurrencyRate { (result) in
+        MockCurrencyRateService().fetchCurrencyBaseRate { (result) in
             switch result {
             case .success(let usdRate):
                 guard let quote = usdRate.quoteDictionary[target] else { return }

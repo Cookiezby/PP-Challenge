@@ -55,6 +55,7 @@
                                     <constraint firstItem="E1g-AP-lAn" firstAttribute="leading" secondItem="LM1-6i-bCS" secondAttribute="leading" constant="8" id="MqA-Uv-XLm"/>
                                     <constraint firstItem="CLn-Yn-k7Z" firstAttribute="centerY" secondItem="LM1-6i-bCS" secondAttribute="centerY" id="RPo-iI-eXb"/>
                                     <constraint firstItem="E1g-AP-lAn" firstAttribute="centerY" secondItem="LM1-6i-bCS" secondAttribute="centerY" id="kdW-BD-UDm"/>
+                                    <constraint firstItem="CLn-Yn-k7Z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="E1g-AP-lAn" secondAttribute="trailing" constant="2" id="l3u-02-ceU"/>
                                     <constraint firstAttribute="height" constant="33" id="myT-h8-yNT"/>
                                     <constraint firstAttribute="width" constant="55" id="sl9-uS-Xap"/>
                                     <constraint firstAttribute="trailing" secondItem="CLn-Yn-k7Z" secondAttribute="trailing" constant="8" id="wf7-Ul-MMz"/>

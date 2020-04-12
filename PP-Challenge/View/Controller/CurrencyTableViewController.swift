@@ -13,28 +13,22 @@ import ReactiveSwift
 class CurrencyTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var viewModel = CurrencyTableViewModel()
+    private var viewModel = CurrencyTableViewModel(service: MockCurrencyService())
     private var currencies = MutableProperty<[Currency]>([])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         setupTableView()
-        APIService.shared.fetchCurrencies { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let currencies):
-                self.currencies.swap(currencies)
-                self.tableView.reloadData()
-                break
-            case .failure:
-                break
-            }
-        }
+        viewModel.fetchCurrencies()
     }
     
     func bindViewModel() {
         currencies <~ viewModel.currencies.signal
+        currencies.signal.observeValues { [weak self] _ in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }
     }
     
     func setupTableView() {

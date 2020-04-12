@@ -19,15 +19,24 @@ protocol CurrencyTableViewModelOutput {
 }
 
 class CurrencyTableViewModel: CurrencyTableViewModelOutput, CurrencyTableViewModelInput {
-    
+    private var service: CurrencyService
     var currencies: MutableProperty<[Currency]>
 
-    init() {
+    init(service: CurrencyService) {
+        self.service = service
         self.currencies = MutableProperty([])
     }
     
     func fetchCurrencies() {
-        
+        service.fetchCurrencies { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let currencies):
+                self.currencies.swap(currencies)
+            case .failure:
+                break
+            }
+        }
     }
     
     func selectCurrency(_ currency: Currency) {
