@@ -68,8 +68,8 @@ class CurrencyRateViewController: UIViewController {
 
     @objc func selectCurrencyViewTapped(_ sender: Any) {
         guard let vc = UIStoryboard.load(.currencyList) as? CurrencyTableViewController else { return }
-        let navi = UINavigationController(rootViewController: vc)
-        present(navi, animated: true, completion: nil)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 }
 

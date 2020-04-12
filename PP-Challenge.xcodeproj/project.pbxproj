@@ -280,8 +280,8 @@
 		FAA8D2E12441E33F007963AB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FAA8D2E22441E36C007963AB /* CurrencyTableViewCell.swift */,
 				FAA8D2E32441E36C007963AB /* CurrencyTableViewCell.xib */,
+				FAA8D2E22441E36C007963AB /* CurrencyTableViewCell.swift */,
 				FAA12B6B2441EA8D00E33756 /* CurrencyRateTableViewCell.swift */,
 				FAA12B6C2441EA8D00E33756 /* CurrencyRateTableViewCell.xib */,
 			);
