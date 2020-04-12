@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBm-eu-oVA">
-                                <rect key="frame" x="0.0" y="134.5" width="414" height="761.5"/>
+                                <rect key="frame" x="0.0" y="133.5" width="414" height="762.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="hQW-0o-5d3"/>
@@ -35,15 +35,34 @@
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LM1-6i-bCS">
                                 <rect key="frame" x="18" y="77" width="55" height="33"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Triangle" translatesAutoresizingMaskIntoConstraints="NO" id="E1g-AP-lAn">
+                                        <rect key="frame" x="8" y="13.5" width="8" height="6"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="6" id="Xkg-L6-yYn"/>
+                                            <constraint firstAttribute="width" constant="8" id="z0S-Ku-eGE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLn-Yn-k7Z">
+                                        <rect key="frame" x="18" y="8.5" width="29" height="16"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="textColor" red="0.098039215690000001" green="0.1450980392" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="E1g-AP-lAn" firstAttribute="leading" secondItem="LM1-6i-bCS" secondAttribute="leading" constant="8" id="MqA-Uv-XLm"/>
+                                    <constraint firstItem="CLn-Yn-k7Z" firstAttribute="centerY" secondItem="LM1-6i-bCS" secondAttribute="centerY" id="RPo-iI-eXb"/>
+                                    <constraint firstItem="E1g-AP-lAn" firstAttribute="centerY" secondItem="LM1-6i-bCS" secondAttribute="centerY" id="kdW-BD-UDm"/>
                                     <constraint firstAttribute="height" constant="33" id="myT-h8-yNT"/>
                                     <constraint firstAttribute="width" constant="55" id="sl9-uS-Xap"/>
+                                    <constraint firstAttribute="trailing" secondItem="CLn-Yn-k7Z" secondAttribute="trailing" constant="8" id="wf7-Ul-MMz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXp-pr-aXb">
                                 <rect key="frame" x="0.0" y="133" width="414" height="0.5"/>
-                                <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="cOr-Wb-eBg"/>
                                 </constraints>
@@ -51,7 +70,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="sBm-eu-oVA" firstAttribute="top" secondItem="oXp-pr-aXb" secondAttribute="bottom" constant="1" id="1gT-y0-TaJ"/>
+                            <constraint firstItem="sBm-eu-oVA" firstAttribute="top" secondItem="oXp-pr-aXb" secondAttribute="bottom" id="1gT-y0-TaJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oXp-pr-aXb" secondAttribute="trailing" id="3Q5-B7-RPo"/>
                             <constraint firstItem="sBm-eu-oVA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="B9E-io-Vmf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qMY-mp-xbB" secondAttribute="trailing" constant="18" id="JfJ-au-ZiC"/>
@@ -77,4 +96,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Triangle" width="8" height="6"/>
+    </resources>
 </document>

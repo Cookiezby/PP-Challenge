@@ -49,12 +49,16 @@ class CurrencyRateViewController: UIViewController {
     }
     
     func setupTableView() {
-         tableView.register(UINib(nibName: "CurrencyRateTableViewCell", bundle: nil), forCellReuseIdentifier: CurrencyRateTableViewCell.description())
+        tableView.register(UINib(nibName: "CurrencyRateTableViewCell", bundle: nil), forCellReuseIdentifier: CurrencyRateTableViewCell.description())
+        tableView.separatorColor = .clear
+        tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
     }
     
     func setupButton() {
         selectCurrencyView.layer.cornerRadius = 4
         selectCurrencyView.layer.applySketchShadow(color: .black, alpha: 0.15, x: 0, y: 1, blur: 7, spread: 0)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectCurrencyViewTapped(_:)))
+        selectCurrencyView.addGestureRecognizer(tap)
     }
     
     func setupTextField() {
@@ -62,7 +66,7 @@ class CurrencyRateViewController: UIViewController {
         textField.adjustsFontSizeToFitWidth = true
     }
 
-    @IBAction func currencyButtonTapped(_ sender: Any) {
+    @objc func selectCurrencyViewTapped(_ sender: Any) {
         guard let vc = UIStoryboard.load(.currencyList) as? CurrencyTableViewController else { return }
         let navi = UINavigationController(rootViewController: vc)
         present(navi, animated: true, completion: nil)
@@ -84,6 +88,14 @@ extension CurrencyRateViewController: UITableViewDelegate, UITableViewDataSource
             cell.setQuote(quote, amount: viewModel.amount.value)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 68
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        textField.resignFirstResponder()
     }
 }
 
