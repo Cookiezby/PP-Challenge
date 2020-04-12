@@ -19,6 +19,10 @@ struct CurrencyRate {
         self.quotes = quotes.map{ (key, value) -> Quote in
             Quote(key: key, value: value)
         }
+        
+        self.quotes.sort { (a, b) -> Bool in
+            a.key < b.key
+        }
     }
 }
 
