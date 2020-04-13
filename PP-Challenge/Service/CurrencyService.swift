@@ -35,9 +35,10 @@ class MockCurrencyService: CurrencyService {
         let url = Bundle.main.url(forResource: "list", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         if let currencies = decode(data: data) {
-            completed(.success(currencies))
+            completed(.failure(.invalidResponse))
+            //completed(.success(currencies))
         } else {
-            
+            completed(.failure(.invalidResponse))
         }
     }
 }
@@ -58,7 +59,7 @@ class CurrencyServiceImpl: CurrencyService {
             if let currencies = self.decode(data: data) {
                 completed(.success(currencies))
             } else {
-                
+                completed(.failure(.invalidResponse))
             }
         }
         task.resume()

@@ -13,13 +13,15 @@ import ReactiveSwift
 class SelectCurrencyViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var viewModel = SelectCurrencyTableViewModel(service: CurrencyServiceImpl())
-    private var currencies = MutableProperty<[Currency]>([])
+    private let viewModel = SelectCurrencyTableViewModel(service: CurrencyServiceImpl())
+    private let currencies = MutableProperty<[Currency]>([])
+    private let errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
+        setupErrorView()
         setupTableView()
+        bindViewModel()
         viewModel.fetchCurrencies()
     }
     
@@ -27,7 +29,27 @@ class SelectCurrencyViewController: UIViewController {
         currencies <~ viewModel.currencies.signal
         currencies.signal.observe(on: UIScheduler()).observeValues { [weak self] _ in
             guard let self = self else { return }
+            self.errorView.isHidden = true
             self.tableView.reloadData()
+        }
+        
+        viewModel.error.signal.skipNil().observe(on: UIScheduler()).observeValues { (error) in
+            if let error = error as? APIError {
+                switch error {
+                case .invalidResponse, .networkError:
+                    self.errorView.isHidden = false
+                }
+            }
+        }
+    }
+    
+    func setupErrorView() {
+        view.addSubview(errorView)
+        errorView.pinToView(tableView)
+        errorView.isHidden = true
+        errorView.reloadButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] (_) in
+            guard let self = self else { return }
+            self.viewModel.fetchCurrencies()
         }
     }
     

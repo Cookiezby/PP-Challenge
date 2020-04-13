@@ -17,7 +17,6 @@ class CurrencyRateViewController: UIViewController {
     @IBOutlet weak var selectCurrencyView: UIView!
     @IBOutlet weak var currencyLabel: UILabel!
     private let viewModel = CurrencyRateViewModel(service: CurrencyRateServiceImpl())
-    
     private var errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
     private var currencyRate = MutableProperty<CurrencyRate?>(nil)
     
@@ -65,11 +64,7 @@ class CurrencyRateViewController: UIViewController {
     
     func setupErrorView() {
         view.addSubview(errorView)
-        errorView.translatesAutoresizingMaskIntoConstraints = false
-        errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        errorView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        errorView.pinToView(view)
         errorView.isHidden = true
         errorView.reloadButton.reactive.controlEvents(.touchUpInside).observe(on: UIScheduler()).observeValues { [weak self] (_) in
             guard let self = self else { return }

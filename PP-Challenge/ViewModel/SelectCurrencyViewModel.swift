@@ -15,12 +15,14 @@ protocol SelectCurrencyViewModelInput {
 }
 
 protocol SelectCurrencyViewModelOutput {
+    var error: MutableProperty<Error?> { get }
     var currencies: MutableProperty<[Currency]> { get }
 }
 
 class SelectCurrencyTableViewModel: SelectCurrencyViewModelOutput, SelectCurrencyViewModelInput {
     private var service: CurrencyService
     var currencies: MutableProperty<[Currency]>
+    var error = MutableProperty<Error?>(nil)
 
     init(service: CurrencyService) {
         self.service = service
@@ -33,8 +35,8 @@ class SelectCurrencyTableViewModel: SelectCurrencyViewModelOutput, SelectCurrenc
             switch result {
             case .success(let currencies):
                 self.currencies.swap(currencies)
-            case .failure:
-                break
+            case .failure(let error):
+                self.error.swap(error)
             }
         }
     }
