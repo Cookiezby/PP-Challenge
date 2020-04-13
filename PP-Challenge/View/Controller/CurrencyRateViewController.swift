@@ -17,7 +17,7 @@ class CurrencyRateViewController: UIViewController {
     @IBOutlet weak var selectCurrencyView: UIView!
     @IBOutlet weak var currencyLabel: UILabel!
     
-    private let viewModel = CurrencyRateViewModel(service: CurrencyRateServiceImpl())
+    private let viewModel = CurrencyRateViewModel(service: MockCurrencyRateService())
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
     
     override func viewDidLoad() {
@@ -48,9 +48,9 @@ class CurrencyRateViewController: UIViewController {
             }
         }
         
-        viewModel.currentCurrency.signal.observe(on: UIScheduler()).observeValues { [weak self] (text) in
-            guard let self = self else { return }
-            self.currencyLabel.text = text
+        viewModel.currentCurrency.producer.start(on: UIScheduler()).startWithValues{ [weak self] (text) in
+             guard let self = self else { return }
+             self.currencyLabel.text = text
         }
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CurrencyService {
-    func fetchCurrencies(completed: @escaping (Result<[Currency], Error>) -> Void)
+    func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void)
 }
 
 extension CurrencyService {
@@ -31,7 +31,7 @@ extension CurrencyService {
 }
 
 class MockCurrencyService: CurrencyService {
-    func fetchCurrencies(completed: @escaping (Result<[Currency], Error>) -> Void) {
+    func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void) {
         let url = Bundle.main.url(forResource: "list", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         if let currencies = decode(data: data) {
@@ -43,7 +43,7 @@ class MockCurrencyService: CurrencyService {
 }
 
 class CurrencyServiceImpl: CurrencyService {
-    func fetchCurrencies(completed: @escaping (Result<[Currency], Error>) -> Void) {
+    func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void) {
         guard let url = URL(string: Constants.currenciesUrl) else { return }
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
@@ -52,7 +52,7 @@ class CurrencyServiceImpl: CurrencyService {
             guard let self = self else { return }
             guard let data = data else { return }
             if let error = error {
-                completed(.failure(error))
+                completed(.failure(.networkError(error)))
                 return
             }
             if let currencies = self.decode(data: data) {

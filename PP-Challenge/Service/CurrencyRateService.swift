@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CurrencyRateService {
-    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, Error>) -> Void)
+    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, APIError>) -> Void)
 }
 
 extension CurrencyRateService {
@@ -32,7 +32,7 @@ extension CurrencyRateService {
 }
 
 class MockCurrencyRateService: CurrencyRateService {
-    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, Error>) -> Void) {
+    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, APIError>) -> Void) {
         let url = Bundle.main.url(forResource: "live", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         if let rate = decode(data: data) {
@@ -51,7 +51,7 @@ class CurrencyRateServiceImpl: CurrencyRateService {
         lastUpdatedTime = UserDefaults.standard.value(forKey: UserDefaultsKey.lastUpdatedTime.rawValue) as? Double
     }
     
-    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, Error>) -> Void) {
+    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, APIError>) -> Void) {
         if let lastUpdatedTime = lastUpdatedTime,
             Date().timeIntervalSince1970 - lastUpdatedTime >= 30 * 60,
             let jsonStr = UserDefaults.standard.value(forKeyPath: UserDefaultsKey.baseRate.rawValue) as? String,
@@ -70,7 +70,7 @@ class CurrencyRateServiceImpl: CurrencyRateService {
             guard let self = self else { return }
             guard let data = data else { return }
             if let error = error {
-                completed(.failure(error))
+                completed(.failure(.networkError(error)))
                 return
             }
             
