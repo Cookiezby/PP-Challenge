@@ -21,7 +21,7 @@ class MockSelectCurrencyService: SelectCurrencyService {
     }
 }
 
-class MockFailCurrencyService: SelectCurrencyService {
+class MockFailSelectCurrencyService: SelectCurrencyService {
     func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void) {
         completed(.failure(.invalidResponse))
     }

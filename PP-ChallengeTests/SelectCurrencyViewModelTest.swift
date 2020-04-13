@@ -13,15 +13,15 @@ class SelectCurrencyViewModelTest: XCTestCase {
 
     func testCurrencyResponseSucceed() {
         let viewModel: SelectCurrencyViewModel = SelectCurrencyViewModelImpl(service: MockSelectCurrencyService())
-        viewModel.currencies.signal.disOnMainWith(self).observeValues { (value) in
+        viewModel.output.currencies.signal.disOnMainWith(self).observeValues { (value) in
             XCTAssert(viewModel.currencies.value.count == 168)
         }
         viewModel.fetchCurrencies()
     }
     
     func testCurrencyResponseFaild() {
-        let viewModel: SelectCurrencyViewModel = SelectCurrencyViewModelImpl(service: MockFailCurrencyService())
-        viewModel.error.signal.skipNil().disOnMainWith(self).observeValues { (value) in
+        let viewModel: SelectCurrencyViewModel = SelectCurrencyViewModelImpl(service: MockFailSelectCurrencyService())
+        viewModel.output.error.signal.skipNil().disOnMainWith(self).observeValues { (value) in
             if let error = value as? APIError, case .invalidResponse = error {
                 //pass
             } else {

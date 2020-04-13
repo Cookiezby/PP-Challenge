@@ -10,8 +10,6 @@ import Foundation
 @testable import PP_Challenge
 
 class MockCurrencyRateService: CurrencyRateService {
-    private var lastUpdatedTime: Double? = nil
-    
     func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, APIError>) -> Void) {
         let url = Bundle(for: type(of: self)).url(forResource: "live", withExtension: "json")!
         let data = try! Data(contentsOf: url)
@@ -23,3 +21,8 @@ class MockCurrencyRateService: CurrencyRateService {
     }
 }
 
+class MockFailCurrencyRateService: CurrencyRateService {
+    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, APIError>) -> Void) {
+        completed(.failure(.invalidResponse))
+    }
+}

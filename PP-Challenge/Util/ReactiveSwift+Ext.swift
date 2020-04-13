@@ -14,9 +14,3 @@ extension Signal {
         return self.take(during: object.reactive.lifetime).observe(on: UIScheduler())
     }
 }
-
-extension SignalProducer {
-    func disOnMainWith(_ object: NSObject) -> SignalProducer<Value, Error> {
-        return self.take(during: object.reactive.lifetime).observe(on: UIScheduler())
-    }
-}

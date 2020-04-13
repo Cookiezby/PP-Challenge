@@ -13,7 +13,7 @@ protocol CurrencyRateService {
 }
 
 extension CurrencyRateService {
-    func decode(data: Data) -> CurrencyRate? {
+    static func decode(data: Data) -> CurrencyRate? {
         do {
             guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { return nil }
             guard let quotes = json["quotes"] as? [String: Double] else { return nil }
@@ -44,7 +44,7 @@ class CurrencyRateServiceImpl: CurrencyRateService {
             Date().timeIntervalSince1970 - lastUpdatedTime >= 30 * 60,
             let jsonStr = UserDefaults.standard.value(forKeyPath: UserDefaultsKey.baseRate.rawValue) as? String,
             let data = jsonStr.data(using: .utf8) {
-            if let rate = decode(data: data) {
+            if let rate = CurrencyRateServiceImpl.decode(data: data) {
                 completed(.success(rate))
                 return
             }
@@ -53,16 +53,19 @@ class CurrencyRateServiceImpl: CurrencyRateService {
         guard let url = URL(string: Constants.rateUrl) else { return }
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20)
-        let task = session.dataTask(with: request) { [weak self] (data, response, error) in
-            guard let self = self else { return }
-            guard let data = data else { return }
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 5)
+        let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completed(.failure(.networkError(error)))
                 return
             }
             
-            if let rate = self.decode(data: data) {
+            guard let data = data else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+           
+            if let rate = CurrencyRateServiceImpl.decode(data: data) {
                 UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: UserDefaultsKey.baseRateLastUpdatedTime.rawValue)
                 String(data: data, encoding: .utf8).map { UserDefaults.standard.set($0, forKey: UserDefaultsKey.baseRate.rawValue) }
                 UserDefaults.standard.synchronize()

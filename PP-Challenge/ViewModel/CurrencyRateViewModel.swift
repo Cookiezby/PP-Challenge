@@ -18,7 +18,6 @@ protocol CurrencyRateViewModelOutput {
     var amount: MutableProperty<Double> { get }
     var error: MutableProperty<Error?> { get }
     var currencyRate: MutableProperty<CurrencyRate?> { get }
-    var currentCurrency: MutableProperty<String?> { get }
     var hudHidden: MutableProperty<Bool> { get }
 }
 
@@ -37,7 +36,6 @@ class CurrencyRateViewModelImpl: CurrencyRateViewModel {
     var amount = MutableProperty<Double>(1)
     var baseRate = MutableProperty<CurrencyRate?>(nil)
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
-    var currentCurrency = MutableProperty<String?>(nil)
     var hudHidden = MutableProperty<Bool>(false)
     
     init(service: CurrencyRateService) {
@@ -58,7 +56,6 @@ class CurrencyRateViewModelImpl: CurrencyRateViewModel {
             case .success(let rate):
                 self.baseRate.swap(rate)
                 self.currencyRate.swap(rate)
-                self.currentCurrency.swap(rate.source)
                 EnvironmentData.shared.currentCurrency = rate.source
             case .failure(let error):
                 self.error.swap(error)
