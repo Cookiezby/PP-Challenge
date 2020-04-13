@@ -31,18 +31,6 @@ extension CurrencyRateService {
     }
 }
 
-class MockCurrencyRateService: CurrencyRateService {
-    func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, APIError>) -> Void) {
-        let url = Bundle.main.url(forResource: "live", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        if let rate = decode(data: data) {
-            completed(.success(rate))
-        } else {
-            completed(.failure(.invalidResponse))
-        }
-    }
-}
-
 class CurrencyRateServiceImpl: CurrencyRateService {
     
     private var lastUpdatedTime: Double? = nil

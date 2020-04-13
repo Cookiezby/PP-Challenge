@@ -52,23 +52,3 @@ class SelectCurrencyServiceImpl: SelectCurrencyService {
         task.resume()
     }
 }
-
-
-class MockSelectCurrencyService: SelectCurrencyService {
-    func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void) {
-        let url = Bundle.main.url(forResource: "list", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        if let currencies = decode(data: data) {
-            completed(.success(currencies))
-        } else {
-            completed(.failure(.invalidResponse))
-        }
-    }
-}
-
-class MockFailCurrencyService: SelectCurrencyService {
-    func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void) {
-        completed(.failure(.invalidResponse))
-    }
-}
-

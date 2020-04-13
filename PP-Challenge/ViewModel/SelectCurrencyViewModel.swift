@@ -20,10 +20,17 @@ protocol SelectCurrencyViewModelOutput {
     var currencies: MutableProperty<[Currency]> { get }
 }
 
-protocol SelectCurrencyViewModel: SelectCurrencyViewModelOutput & SelectCurrencyViewModelInput {}
+protocol SelectCurrencyViewModel: SelectCurrencyViewModelOutput & SelectCurrencyViewModelInput {
+    var input: SelectCurrencyViewModelInput { get }
+    var output: SelectCurrencyViewModelOutput { get }
+}
 
 class SelectCurrencyViewModelImpl: SelectCurrencyViewModel {
     private var service: SelectCurrencyService
+    
+    var input: SelectCurrencyViewModelInput { self }
+    var output: SelectCurrencyViewModelOutput { self }
+    
     var currencies: MutableProperty<[Currency]>
     var error = MutableProperty<Error?>(nil)
     var hudHidden = MutableProperty<Bool>(false)

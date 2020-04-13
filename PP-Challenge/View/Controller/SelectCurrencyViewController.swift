@@ -14,7 +14,7 @@ import MBProgressHUD
 class SelectCurrencyViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private let viewModel = SelectCurrencyViewModelImpl(service: MockSelectCurrencyService())
+    private let viewModel = SelectCurrencyViewModelImpl(service: SelectCurrencyServiceImpl())
     private let currencies = MutableProperty<[Currency]>([])
     private let errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
     
@@ -27,14 +27,14 @@ class SelectCurrencyViewController: UIViewController {
     }
     
     func bind(_ viewModel: SelectCurrencyViewModel) {
-        currencies <~ viewModel.currencies.signal
+        currencies <~ viewModel.output.currencies.signal
         currencies.signal.disOnMainWith(self).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.errorView.isHidden = true
             self.tableView.reloadData()
         }
         
-        viewModel.error.signal.skipNil().disOnMainWith(self).observeValues { (error) in
+        viewModel.output.error.signal.skipNil().disOnMainWith(self).observeValues { (error) in
             if let error = error as? APIError {
                 switch error {
                 case .invalidResponse, .networkError:
@@ -43,7 +43,7 @@ class SelectCurrencyViewController: UIViewController {
             }
         }
         
-        viewModel.hudHidden.signal.disOnMainWith(self).observeValues { [weak self] (hidden) in
+        viewModel.output.hudHidden.signal.disOnMainWith(self).observeValues { [weak self] (hidden) in
             guard let self = self else { return }
             if hidden {
                 MBProgressHUD.hide(for: self.view, animated: true)
@@ -94,7 +94,7 @@ extension SelectCurrencyViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.selectCurrency(currencies.value[indexPath.row])
+        viewModel.input.selectCurrency(currencies.value[indexPath.row])
         dismiss(animated: true, completion: nil)
     }
 }

@@ -17,7 +17,7 @@ class CurrencyRateViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectCurrencyView: UIView!
     @IBOutlet weak var currencyLabel: UILabel!
-    private let viewModel = CurrencyRateViewModelImpl(service: MockCurrencyRateService())
+    private let viewModel = CurrencyRateViewModelImpl(service: CurrencyRateServiceImpl())
     private var errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
     private var currencyRate = MutableProperty<CurrencyRate?>(nil)
     
@@ -32,7 +32,7 @@ class CurrencyRateViewController: UIViewController {
     }
         
     func bind(_ viewModel: CurrencyRateViewModel) {
-        currencyRate <~ viewModel.currencyRate.signal.skipNil().disOnMainWith(self)
+        currencyRate <~ viewModel.output.currencyRate.signal.skipNil().disOnMainWith(self)
         
         currencyRate.signal.skipNil().disOnMainWith(self).observeValues { [weak self] (rate) in
             guard let self = self else { return }
@@ -41,17 +41,17 @@ class CurrencyRateViewController: UIViewController {
             self.tableView.reloadData()
         }
         
-        viewModel.amount.signal.skipRepeats().disOnMainWith(self).observeValues { [weak self] _ in
+        viewModel.output.amount.signal.skipRepeats().disOnMainWith(self).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.tableView.reloadData()
         }
         
         textField.reactive.continuousTextValues.observeValues { (value) in
             let amount = Double(value) ?? 0
-            viewModel.updateAmount(amount)
+            viewModel.input.updateAmount(amount)
         }
         
-        viewModel.error.signal.skipNil().disOnMainWith(self).observeValues { [weak self] (error) in
+        viewModel.output.error.signal.skipNil().disOnMainWith(self).observeValues { [weak self] (error) in
             guard let self = self else { return }
             if let error = error as? APIError {
                 switch error {
@@ -61,7 +61,7 @@ class CurrencyRateViewController: UIViewController {
             }
         }
         
-        viewModel.hudHidden.signal.disOnMainWith(self).observeValues { [weak self] (hidden) in
+        viewModel.output.hudHidden.signal.disOnMainWith(self).observeValues { [weak self] (hidden) in
             guard let self = self else { return }
             if hidden {
                 MBProgressHUD.hide(for: self.view, animated: true)

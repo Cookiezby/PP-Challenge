@@ -22,10 +22,17 @@ protocol CurrencyRateViewModelOutput {
     var hudHidden: MutableProperty<Bool> { get }
 }
 
-protocol CurrencyRateViewModel: CurrencyRateViewModelInput & CurrencyRateViewModelOutput {}
+protocol CurrencyRateViewModel: CurrencyRateViewModelInput & CurrencyRateViewModelOutput {
+    var input: CurrencyRateViewModelInput { get }
+    var output: CurrencyRateViewModelOutput { get }
+}
 
 class CurrencyRateViewModelImpl: CurrencyRateViewModel {
     private var service: CurrencyRateService
+    
+    var input: CurrencyRateViewModelInput { self }
+    var output: CurrencyRateViewModelOutput { self }
+    
     var error = MutableProperty<Error?>(nil)
     var amount = MutableProperty<Double>(1)
     var baseRate = MutableProperty<CurrencyRate?>(nil)
