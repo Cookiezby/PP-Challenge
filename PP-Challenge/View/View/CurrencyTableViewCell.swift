@@ -15,7 +15,7 @@ class CurrencyTableViewCell: UITableViewCell {
     @IBOutlet weak var checkMark: UIImageView!
     
     func setCurrency(_ currency: Currency) {
-        checkMark.isHidden = EnviromentData.shared.currentCurrency != currency.name
+        checkMark.isHidden = EnvironmentData.shared.currentCurrency != currency.name
         nameLabel.text = currency.name
         descriptionLabel.text = currency.detail
     }

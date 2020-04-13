@@ -1,5 +1,5 @@
 //
-//  EnviromentData.swift
+//  EnvironmentData.swift
 //  PP-Challenge
 //
 //  Created by 朱冰一 on 2020/04/12.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EnviromentData {
-    static let shared = EnviromentData()
+class EnvironmentData {
+    static let shared = EnvironmentData()
     var currentCurrency: String? = nil
 }

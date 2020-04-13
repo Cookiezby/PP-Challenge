@@ -40,6 +40,6 @@ class CurrencyTableViewModel: CurrencyTableViewModelOutput, CurrencyTableViewMod
     }
     
     func selectCurrency(_ currency: Currency) {
-        EnviromentData.shared.currentCurrency = currency.name
+        EnvironmentData.shared.currentCurrency = currency.name
     }
 }

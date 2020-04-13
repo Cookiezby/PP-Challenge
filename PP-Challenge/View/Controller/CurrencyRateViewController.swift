@@ -11,31 +11,32 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class CurrencyRateViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectCurrencyView: UIView!
     @IBOutlet weak var currencyLabel: UILabel!
-//    private var errorView: ErrorView = {
-//
-//    }
+    private let viewModel = CurrencyRateViewModel(service: CurrencyRateServiceImpl())
     
-    private let viewModel = CurrencyRateViewModel(service: MockCurrencyRateService())
-    var currencyRate = MutableProperty<CurrencyRate?>(nil)
+    private var errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
+    private var currencyRate = MutableProperty<CurrencyRate?>(nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupErrorView()
         setupButton()
         setupTextField()
         setupTableView()
         bind()
-        viewModel.fetchRate()
+        viewModel.fetchCurrencyRate()
     }
-    
+        
     func bind() {
         currencyRate <~ viewModel.currencyRate.signal.skipNil()
-        currencyRate.signal.observe(on: UIScheduler()).observeValues { [weak self] (_) in
+        currencyRate.signal.skipNil().observe(on: UIScheduler()).observeValues { [weak self] (rate) in
             guard let self = self else { return }
+            self.currencyLabel.text = rate.source
+            self.errorView.isHidden = true
             self.tableView.reloadData()
         }
         
@@ -51,9 +52,28 @@ class CurrencyRateViewController: UIViewController {
             }
         }
         
-        viewModel.currentCurrency.producer.start(on: UIScheduler()).startWithValues{ [weak self] (text) in
-             guard let self = self else { return }
-             self.currencyLabel.text = text
+        viewModel.error.signal.skipNil().observe(on: UIScheduler()).observeValues { [weak self] (error) in
+            guard let self = self else { return }
+            if let error = error as? APIError {
+                switch error {
+                case .invalidResponse, .networkError:
+                    self.errorView.isHidden = false
+                }
+            }
+        }
+    }
+    
+    func setupErrorView() {
+        view.addSubview(errorView)
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        errorView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        errorView.isHidden = true
+        errorView.reloadButton.reactive.controlEvents(.touchUpInside).observe(on: UIScheduler()).observeValues { [weak self] (_) in
+            guard let self = self else { return }
+            self.viewModel.fetchCurrencyRate()
         }
     }
     
