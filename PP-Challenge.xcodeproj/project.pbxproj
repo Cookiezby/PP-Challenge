@@ -26,6 +26,7 @@
 		FAA12B872443EFED00E33756 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B862443EFED00E33756 /* Error.swift */; };
 		FAA12B892443FAC000E33756 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B882443FAC000E33756 /* ErrorView.swift */; };
 		FAA12B8B2443FAD300E33756 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA12B8A2443FAD300E33756 /* ErrorView.xib */; };
+		FAA12B8D244407DE00E33756 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B8C244407DE00E33756 /* Notification.swift */; };
 		FAA8D299243DA8C3007963AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D298243DA8C3007963AB /* AppDelegate.swift */; };
 		FAA8D29B243DA8C3007963AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D29A243DA8C3007963AB /* SceneDelegate.swift */; };
 		FAA8D29D243DA8C3007963AB /* CurrencyRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D29C243DA8C3007963AB /* CurrencyRateViewController.swift */; };
@@ -84,6 +85,7 @@
 		FAA12B862443EFED00E33756 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		FAA12B882443FAC000E33756 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		FAA12B8A2443FAD300E33756 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		FAA12B8C244407DE00E33756 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		FAA8D295243DA8C3007963AB /* PP-Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PP-Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA8D298243DA8C3007963AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAA8D29A243DA8C3007963AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				FAA12B7A2442E99900E33756 /* CALayer+Ext.swift */,
 				FAA12B82244348EE00E33756 /* Constants.swift */,
 				FAA12B84244359FF00E33756 /* UserDefaultsKey.swift */,
+				FAA12B8C244407DE00E33756 /* Notification.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				FAA12B7F2443077A00E33756 /* CurrencyRateService.swift in Sources */,
 				FAA12B892443FAC000E33756 /* ErrorView.swift in Sources */,
 				FAA8D2E42441E36C007963AB /* CurrencyTableViewCell.swift in Sources */,
+				FAA12B8D244407DE00E33756 /* Notification.swift in Sources */,
 				FAA12B702441ED5C00E33756 /* CurrencyRateViewModel.swift in Sources */,
 				FAA8D2DB2441CDA7007963AB /* CurrencyTableViewModel.swift in Sources */,
 				FAA12B872443EFED00E33756 /* Error.swift in Sources */,

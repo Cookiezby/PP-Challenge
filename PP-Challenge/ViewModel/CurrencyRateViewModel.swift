@@ -25,11 +25,17 @@ class CurrencyRateViewModel: CurrencyRateViewModelInput, CurrencyRateViewModelOu
     private var service: CurrencyRateService
     var error = MutableProperty<Error?>(nil)
     var amount = MutableProperty<Double>(1)
+    var baseRate = MutableProperty<CurrencyRate?>(nil)
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
     var currentCurrency = MutableProperty<String?>(nil)
     
     init(service: CurrencyRateService) {
         self.service = service
+        addNotificationObservation()
+    }
+    
+    func addNotificationObservation() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrencyRate), name: .currencyChanged, object: nil)
     }
     
     func fetchCurrencyRate() {
@@ -37,6 +43,7 @@ class CurrencyRateViewModel: CurrencyRateViewModelInput, CurrencyRateViewModelOu
             guard let self = self else { return }
             switch result {
             case .success(let rate):
+                self.baseRate.swap(rate)
                 self.currencyRate.swap(rate)
                 self.currentCurrency.swap(rate.source)
                 EnvironmentData.shared.currentCurrency = rate.source
@@ -48,5 +55,18 @@ class CurrencyRateViewModel: CurrencyRateViewModelInput, CurrencyRateViewModelOu
     
     func updateAmount(_ amount: Double) {
         self.amount.swap(amount)
+    }
+    
+    @objc func updateCurrencyRate() {
+        guard let baseRate = self.baseRate.value else { return }
+        guard let target = EnvironmentData.shared.currentCurrency else { return }
+        guard let quote = baseRate.quoteDictionary[target] else { return }
+        let multiple: Double = 1 / quote
+        var quotes: [String: Double] = [:]
+        for key in baseRate.quoteDictionary.keys {
+            quotes[key] = baseRate.quoteDictionary[key]! * multiple
+        }
+        let targetRate = CurrencyRate(source: target, quotes: quotes)
+        currencyRate.swap(targetRate)
     }
 }

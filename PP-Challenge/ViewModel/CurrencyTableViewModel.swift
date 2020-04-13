@@ -40,6 +40,8 @@ class CurrencyTableViewModel: CurrencyTableViewModelOutput, CurrencyTableViewMod
     }
     
     func selectCurrency(_ currency: Currency) {
+        guard EnvironmentData.shared.currentCurrency != currency.name else { return }
         EnvironmentData.shared.currentCurrency = currency.name
+        NotificationCenter.default.post(name: .currencyChanged, object: nil)
     }
 }
