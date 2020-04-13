@@ -13,6 +13,7 @@
 		6FC513140A9B6A4664BC38EF /* Pods_PP_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35203329C5EF8F9BC2D47D5 /* Pods_PP_ChallengeTests.framework */; };
 		EA248AF64AE7897855CC7197 /* Pods_PP_Challenge_PP_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDF1AD613DC8A372AE83FF98 /* Pods_PP_Challenge_PP_ChallengeUITests.framework */; };
 		FA5A2F162444296100A94A6E /* ReactiveSwift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A2F152444296100A94A6E /* ReactiveSwift+Ext.swift */; };
+		FA5A2F1F24444D1800A94A6E /* SelectCurrencyViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A2F1E24444D1800A94A6E /* SelectCurrencyViewModelTest.swift */; };
 		FAA12B6D2441EA8D00E33756 /* CurrencyRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B6B2441EA8D00E33756 /* CurrencyRateTableViewCell.swift */; };
 		FAA12B6E2441EA8D00E33756 /* CurrencyRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA12B6C2441EA8D00E33756 /* CurrencyRateTableViewCell.xib */; };
 		FAA12B702441ED5C00E33756 /* CurrencyRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B6F2441ED5C00E33756 /* CurrencyRateViewModel.swift */; };
@@ -34,7 +35,6 @@
 		FAA8D2A0243DA8C3007963AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D29E243DA8C3007963AB /* Main.storyboard */; };
 		FAA8D2A2243DA8C5007963AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2A1243DA8C5007963AB /* Assets.xcassets */; };
 		FAA8D2A5243DA8C5007963AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2A3243DA8C5007963AB /* LaunchScreen.storyboard */; };
-		FAA8D2B0243DA8C5007963AB /* PP_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2AF243DA8C5007963AB /* PP_ChallengeTests.swift */; };
 		FAA8D2BB243DA8C5007963AB /* PP_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2BA243DA8C5007963AB /* PP_ChallengeUITests.swift */; };
 		FAA8D2CB24418E68007963AB /* SelectCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8D2CA24418E68007963AB /* SelectCurrencyViewController.swift */; };
 		FAA8D2CF2441934C007963AB /* SelectCurrencyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA8D2CE2441934C007963AB /* SelectCurrencyViewController.storyboard */; };
@@ -73,6 +73,7 @@
 		CC02F91DD1BF11D6ACE8F05B /* Pods-PP-Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PP-Challenge.debug.xcconfig"; path = "Target Support Files/Pods-PP-Challenge/Pods-PP-Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		D5E22FF79916827F1B1E2358 /* Pods-PP-Challenge-PP-ChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PP-Challenge-PP-ChallengeUITests.debug.xcconfig"; path = "Target Support Files/Pods-PP-Challenge-PP-ChallengeUITests/Pods-PP-Challenge-PP-ChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA5A2F152444296100A94A6E /* ReactiveSwift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReactiveSwift+Ext.swift"; sourceTree = "<group>"; };
+		FA5A2F1E24444D1800A94A6E /* SelectCurrencyViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewModelTest.swift; sourceTree = "<group>"; };
 		FAA12B6B2441EA8D00E33756 /* CurrencyRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateTableViewCell.swift; sourceTree = "<group>"; };
 		FAA12B6C2441EA8D00E33756 /* CurrencyRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyRateTableViewCell.xib; sourceTree = "<group>"; };
 		FAA12B6F2441ED5C00E33756 /* CurrencyRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateViewModel.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		FAA8D2A4243DA8C5007963AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAA8D2A6243DA8C5007963AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA8D2AB243DA8C5007963AB /* PP-ChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PP-ChallengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAA8D2AF243DA8C5007963AB /* PP_ChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PP_ChallengeTests.swift; sourceTree = "<group>"; };
 		FAA8D2B1243DA8C5007963AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA8D2B6243DA8C5007963AB /* PP-ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PP-ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA8D2BA243DA8C5007963AB /* PP_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PP_ChallengeUITests.swift; sourceTree = "<group>"; };
@@ -237,8 +237,8 @@
 		FAA8D2AE243DA8C5007963AB /* PP-ChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
-				FAA8D2AF243DA8C5007963AB /* PP_ChallengeTests.swift */,
 				FAA8D2B1243DA8C5007963AB /* Info.plist */,
+				FA5A2F1E24444D1800A94A6E /* SelectCurrencyViewModelTest.swift */,
 			);
 			path = "PP-ChallengeTests";
 			sourceTree = "<group>";
@@ -589,7 +589,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA8D2B0243DA8C5007963AB /* PP_ChallengeTests.swift in Sources */,
+				FA5A2F1F24444D1800A94A6E /* SelectCurrencyViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,7 +799,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2RNKT55WYW;
 				INFOPLIST_FILE = "PP-ChallengeTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -822,7 +822,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2RNKT55WYW;
 				INFOPLIST_FILE = "PP-ChallengeTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
