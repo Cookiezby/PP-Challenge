@@ -15,7 +15,11 @@ class CurrencyRateTableViewCell: UITableViewCell {
     
     func setQuote(_ quote: Quote, amount: Double) {
         nameLabel.text = quote.key
-        numberLabel.text = "\(Double(round(quote.value * amount * 1000) / 1000))"
+        if amount == 0 {
+            numberLabel.text = "0"
+        } else {
+            numberLabel.text = "\(Double(round(quote.value * amount * 1000) / 1000))"
+        }
     }
     
     override func awakeFromNib() {
