@@ -13,32 +13,18 @@ struct CurrencyRate {
     private(set) var quoteDictionary: [String: Double]
     private(set) var quotes: [Quote]
     
-    enum Key: String {
-        case sources
-        case quoteDictionary
-        case quotes
-    }
-    
     init(source: String, quotes: [String: Double]) {
         self.source = source
         self.quoteDictionary = quotes
-        self.quotes = quotes.map{ (key, value) -> Quote in
-            Quote(key: key, value: value)
-        }
-        
+        self.quotes = quotes.map{ Quote(key: $0, value: $1) }
         self.quotes.sort { $0.key < $1.key }
     }
 }
 
 struct Quote {
-    var key: String
-    var value: Double
-    
-    enum Key: String {
-        case key
-        case value
-    }
-    
+    private(set) var key: String
+    private(set) var value: Double
+
     init(key: String, value: Double) {
         self.key = key
         self.value = value
