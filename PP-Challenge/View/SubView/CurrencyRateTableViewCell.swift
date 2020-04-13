@@ -24,8 +24,4 @@ class CurrencyRateTableViewCell: UITableViewCell {
         shadowView.layer.cornerRadius = 6
         shadowView.layer.applySketchShadow(color: .black, alpha: 0.15, x: 0, y: 1, blur: 7, spread: 0)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
 }

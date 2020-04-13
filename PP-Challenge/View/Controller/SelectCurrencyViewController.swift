@@ -13,7 +13,7 @@ import ReactiveSwift
 class SelectCurrencyViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private let viewModel = SelectCurrencyTableViewModel(service: CurrencyServiceImpl())
+    private let viewModel = SelectCurrencyTableViewModel(service: MockSelectCurrencyService())
     private let currencies = MutableProperty<[Currency]>([])
     private let errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
     

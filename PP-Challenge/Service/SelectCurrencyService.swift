@@ -1,5 +1,5 @@
 //
-//  CurrencyService.swift
+//  SelectCurrencyService.swift
 //  PP-Challenge
 //
 //  Created by 朱冰一 on 2020/04/12.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol CurrencyService {
+protocol SelectCurrencyService {
     func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void)
 }
 
-extension CurrencyService {
+extension SelectCurrencyService {
     func decode(data: Data) -> [Currency]? {
         do {
             guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { return nil }
@@ -30,20 +30,19 @@ extension CurrencyService {
     }
 }
 
-class MockCurrencyService: CurrencyService {
+class MockSelectCurrencyService: SelectCurrencyService {
     func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void) {
         let url = Bundle.main.url(forResource: "list", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         if let currencies = decode(data: data) {
-            completed(.failure(.invalidResponse))
-            //completed(.success(currencies))
+            completed(.success(currencies))
         } else {
             completed(.failure(.invalidResponse))
         }
     }
 }
 
-class CurrencyServiceImpl: CurrencyService {
+class SelectCurrencyServiceImpl: SelectCurrencyService {
     func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void) {
         guard let url = URL(string: Constants.currenciesUrl) else { return }
         let config = URLSessionConfiguration.default

@@ -36,10 +36,9 @@ class MockCurrencyRateService: CurrencyRateService {
         let url = Bundle.main.url(forResource: "live", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         if let rate = decode(data: data) {
-            completed(.failure(.invalidResponse))
-            //completed(.success(rate))
+            completed(.success(rate))
         } else {
-            
+            completed(.failure(.invalidResponse))
         }
     }
 }
@@ -81,7 +80,7 @@ class CurrencyRateServiceImpl: CurrencyRateService {
                 UserDefaults.standard.synchronize()
                 completed(.success(rate))
             } else {
-                
+                completed(.failure(.invalidResponse))
             }
         }
         task.resume()

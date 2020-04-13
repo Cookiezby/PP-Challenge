@@ -20,11 +20,11 @@ protocol SelectCurrencyViewModelOutput {
 }
 
 class SelectCurrencyTableViewModel: SelectCurrencyViewModelOutput, SelectCurrencyViewModelInput {
-    private var service: CurrencyService
+    private var service: SelectCurrencyService
     var currencies: MutableProperty<[Currency]>
     var error = MutableProperty<Error?>(nil)
 
-    init(service: CurrencyService) {
+    init(service: SelectCurrencyService) {
         self.service = service
         self.currencies = MutableProperty([])
     }
