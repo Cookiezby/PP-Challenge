@@ -9,7 +9,7 @@
 import Foundation
 
 struct CurrencyRate {
-    var source: String
+    private(set) var source: String
     private(set) var quoteDictionary: [String: Double]
     private(set) var quotes: [Quote]
     

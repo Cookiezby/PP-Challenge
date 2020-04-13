@@ -1,5 +1,5 @@
 //
-//  CurrencyListViewController.swift
+//  SelectCurrencyViewController.swift
 //  PP-Challenge
 //
 //  Created by 朱冰一 on 2020/04/11.
@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import ReactiveSwift
 
-class CurrencyTableViewController: UIViewController {
+class SelectCurrencyViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var viewModel = CurrencyTableViewModel(service: CurrencyServiceImpl())
+    private var viewModel = SelectCurrencyTableViewModel(service: CurrencyServiceImpl())
     private var currencies = MutableProperty<[Currency]>([])
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class CurrencyTableViewController: UIViewController {
     }
 }
 
-extension CurrencyTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension SelectCurrencyViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

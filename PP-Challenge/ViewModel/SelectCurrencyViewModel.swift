@@ -1,5 +1,5 @@
 //
-//  CurrencyListViewModel.swift
+//  SelectCurrencyListViewModel.swift
 //  PP-Challenge
 //
 //  Created by 朱冰一 on 2020/04/11.
@@ -9,16 +9,16 @@
 import Foundation
 import ReactiveSwift
 
-protocol CurrencyTableViewModelInput {
+protocol SelectCurrencyViewModelInput {
     func fetchCurrencies()
     func selectCurrency(_ currency: Currency)
 }
 
-protocol CurrencyTableViewModelOutput {
+protocol SelectCurrencyViewModelOutput {
     var currencies: MutableProperty<[Currency]> { get }
 }
 
-class CurrencyTableViewModel: CurrencyTableViewModelOutput, CurrencyTableViewModelInput {
+class SelectCurrencyTableViewModel: SelectCurrencyViewModelOutput, SelectCurrencyViewModelInput {
     private var service: CurrencyService
     var currencies: MutableProperty<[Currency]>
 

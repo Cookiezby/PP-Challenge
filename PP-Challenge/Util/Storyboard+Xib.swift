@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum StoryboardName: String {
-    case currencyList = "CurrencyTableViewController"
+    case currencyList = "SelectCurrencyViewController"
 }
 
 enum ViewName: String {
