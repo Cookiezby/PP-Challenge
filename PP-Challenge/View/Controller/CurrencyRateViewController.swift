@@ -96,6 +96,7 @@ class CurrencyRateViewController: UIViewController {
     
     func setupTextField() {
         textField.delegate = self
+    
         textField.adjustsFontSizeToFitWidth = true
     }
 
@@ -134,31 +135,12 @@ extension CurrencyRateViewController: UITableViewDelegate, UITableViewDataSource
 
 extension CurrencyRateViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string == "" {
+        let currentText = textField.text ?? ""
+        let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        if newText.count > 0 {
+            return Double(newText) != nil ? true : false
+        } else {
             return true
         }
-        
-        if (textField.text == nil || textField.text?.count == 0) && string == "." {
-            return false
-        }
-        
-        var dotCount = 0
-        let charArray = Array(textField.text ?? "")
-        charArray.forEach { (c) in
-            if c == "." {
-                dotCount += 1
-            }
-        }
-        if dotCount == 1 && string == "." {
-            return false
-        }
-        
-        if dotCount == 1 {
-            if let strs = textField.text?.split(separator: "."), strs.count == 2, let last = strs.last, last.count >= 2 {
-                return false
-            }
-        }
-        
-        return true
     }
 }
