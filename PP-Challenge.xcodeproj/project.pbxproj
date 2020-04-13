@@ -16,7 +16,6 @@
 		FAA12B6E2441EA8D00E33756 /* CurrencyRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA12B6C2441EA8D00E33756 /* CurrencyRateTableViewCell.xib */; };
 		FAA12B702441ED5C00E33756 /* CurrencyRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B6F2441ED5C00E33756 /* CurrencyRateViewModel.swift */; };
 		FAA12B742441F6CD00E33756 /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B732441F6CD00E33756 /* CurrencyRate.swift */; };
-		FAA12B772441FF7700E33756 /* RateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B762441FF7700E33756 /* RateCalculator.swift */; };
 		FAA12B7B2442E99900E33756 /* CALayer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B7A2442E99900E33756 /* CALayer+Ext.swift */; };
 		FAA12B7D2443009400E33756 /* EnvironmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B7C2443009400E33756 /* EnvironmentData.swift */; };
 		FAA12B7F2443077A00E33756 /* CurrencyRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA12B7E2443077A00E33756 /* CurrencyRateService.swift */; };
@@ -75,7 +74,6 @@
 		FAA12B6C2441EA8D00E33756 /* CurrencyRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyRateTableViewCell.xib; sourceTree = "<group>"; };
 		FAA12B6F2441ED5C00E33756 /* CurrencyRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateViewModel.swift; sourceTree = "<group>"; };
 		FAA12B732441F6CD00E33756 /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
-		FAA12B762441FF7700E33756 /* RateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCalculator.swift; sourceTree = "<group>"; };
 		FAA12B7A2442E99900E33756 /* CALayer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Ext.swift"; sourceTree = "<group>"; };
 		FAA12B7C2443009400E33756 /* EnvironmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentData.swift; sourceTree = "<group>"; };
 		FAA12B7E2443077A00E33756 /* CurrencyRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateService.swift; sourceTree = "<group>"; };
@@ -252,7 +250,6 @@
 		FAA8D2D0244196B7007963AB /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				FAA12B762441FF7700E33756 /* RateCalculator.swift */,
 				FAA8D2D32441972E007963AB /* Storyboard+Xib.swift */,
 				FAA12B7A2442E99900E33756 /* CALayer+Ext.swift */,
 				FAA12B82244348EE00E33756 /* Constants.swift */,
@@ -563,7 +560,6 @@
 				FAA12B7D2443009400E33756 /* EnvironmentData.swift in Sources */,
 				FAA8D2CB24418E68007963AB /* CurrencyTableViewController.swift in Sources */,
 				2C3F7E34243F157F00CD544C /* Currency.swift in Sources */,
-				FAA12B772441FF7700E33756 /* RateCalculator.swift in Sources */,
 				FAA8D29D243DA8C3007963AB /* CurrencyRateViewController.swift in Sources */,
 				FAA12B742441F6CD00E33756 /* CurrencyRate.swift in Sources */,
 				FAA12B7B2442E99900E33756 /* CALayer+Ext.swift in Sources */,
