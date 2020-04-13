@@ -20,6 +20,12 @@ class CurrencyRateViewModelTest: XCTestCase {
     }
     
     func testFetchCurrencyRate() throws {
-        
+        let viewModel: CurrencyRateViewModel = CurrencyRateViewModelImpl(service: MockCurrencyRateService())
+        viewModel.currencyRate.signal.skipNil().disOnMainWith(self).observeValues { (rate) in
+            XCTAssert(rate.source == "USD")
+            XCTAssert(rate.quotes.count == 168)
+            
+        }
+        viewModel.input.fetchCurrencyRate()
     }
 }

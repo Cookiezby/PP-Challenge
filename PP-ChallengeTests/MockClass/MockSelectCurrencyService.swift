@@ -11,7 +11,7 @@ import Foundation
 
 class MockSelectCurrencyService: SelectCurrencyService {
     func fetchCurrencies(completed: @escaping (Result<[Currency], APIError>) -> Void) {
-        let url = Bundle.main.url(forResource: "list", withExtension: "json")!
+        let url = Bundle(for: type(of: self)).url(forResource: "list", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         if let currencies = decode(data: data) {
             completed(.success(currencies))

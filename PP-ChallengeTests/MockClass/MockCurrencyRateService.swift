@@ -13,7 +13,7 @@ class MockCurrencyRateService: CurrencyRateService {
     private var lastUpdatedTime: Double? = nil
     
     func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, APIError>) -> Void) {
-        let url = Bundle.main.url(forResource: "live", withExtension: "json")!
+        let url = Bundle(for: type(of: self)).url(forResource: "live", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         if let rate = decode(data: data) {
             completed(.success(rate))
