@@ -18,6 +18,7 @@ class CurrencyRateTableViewCell: UITableViewCell {
         if amount == 0 {
             numberLabel.text = "0"
         } else {
+            // keep three decimal places
             numberLabel.text = "\(Double(round(quote.value * amount * 1000) / 1000))"
         }
     }

@@ -11,7 +11,15 @@ import XCTest
 
 class CurrencyRateViewModelTest: XCTestCase {
     
-    func testExample() throws {
+    func testChangeAmount() throws {
         let viewModel: CurrencyRateViewModel = CurrencyRateViewModelImpl(service: MockCurrencyRateService())
+        viewModel.output.amount.signal.disOnMainWith(self).observeValues { (value) in
+            XCTAssert(value == 100.5)
+        }
+        viewModel.input.updateAmount(100.5)
+    }
+    
+    func testFetchCurrencyRate() throws {
+        
     }
 }

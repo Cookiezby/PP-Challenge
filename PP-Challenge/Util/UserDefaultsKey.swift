@@ -9,6 +9,6 @@
 import Foundation
 
 enum UserDefaultsKey: String {
-    case lastUpdatedTime
+    case baseRateLastUpdatedTime
     case baseRate
 }

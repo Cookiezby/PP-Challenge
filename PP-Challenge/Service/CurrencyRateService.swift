@@ -36,7 +36,7 @@ class CurrencyRateServiceImpl: CurrencyRateService {
     private var lastUpdatedTime: Double? = nil
     
     init() {
-        lastUpdatedTime = UserDefaults.standard.value(forKey: UserDefaultsKey.lastUpdatedTime.rawValue) as? Double
+        lastUpdatedTime = UserDefaults.standard.value(forKey: UserDefaultsKey.baseRateLastUpdatedTime.rawValue) as? Double
     }
     
     func fetchCurrencyBaseRate(completed: @escaping (Result<CurrencyRate, APIError>) -> Void) {
@@ -63,7 +63,7 @@ class CurrencyRateServiceImpl: CurrencyRateService {
             }
             
             if let rate = self.decode(data: data) {
-                UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: UserDefaultsKey.lastUpdatedTime.rawValue)
+                UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: UserDefaultsKey.baseRateLastUpdatedTime.rawValue)
                 String(data: data, encoding: .utf8).map { UserDefaults.standard.set($0, forKey: UserDefaultsKey.baseRate.rawValue) }
                 UserDefaults.standard.synchronize()
                 completed(.success(rate))
