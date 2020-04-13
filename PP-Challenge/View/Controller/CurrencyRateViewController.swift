@@ -46,10 +46,8 @@ class CurrencyRateViewController: UIViewController {
         }
         
         textField.reactive.continuousTextValues.observeValues { (value) in
-
-            if let amount = Double(value) {
-                viewModel.updateAmount(amount)
-            }
+            let amount = Double(value) ?? 0
+            viewModel.updateAmount(amount)
         }
         
         viewModel.error.signal.skipNil().disOnMainWith(self).observeValues { [weak self] (error) in
@@ -82,7 +80,7 @@ class CurrencyRateViewController: UIViewController {
     func setupSelectCurrencyButton() {
         selectCurrencyView.layer.cornerRadius = 4
         selectCurrencyView.layer.applySketchShadow(color: .black, alpha: 0.15, x: 0, y: 1, blur: 7, spread: 0)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(selectCurrencyViewTapped(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectCurrencyButtonTapped(_:)))
         selectCurrencyView.addGestureRecognizer(tap)
     }
     
@@ -91,7 +89,7 @@ class CurrencyRateViewController: UIViewController {
         textField.adjustsFontSizeToFitWidth = true
     }
 
-    @objc func selectCurrencyViewTapped(_ sender: Any) {
+    @objc func selectCurrencyButtonTapped(_ sender: Any) {
         let vc = UIStoryboard.load(fromStoryboard: .currencyList, withType: SelectCurrencyViewController.self)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
