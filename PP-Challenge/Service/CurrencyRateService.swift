@@ -36,7 +36,8 @@ class MockCurrencyRateService: CurrencyRateService {
         let url = Bundle.main.url(forResource: "live", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         if let rate = decode(data: data) {
-            completed(.success(rate))
+            completed(.failure(.invalidResponse))
+            //completed(.success(rate))
         } else {
             
         }

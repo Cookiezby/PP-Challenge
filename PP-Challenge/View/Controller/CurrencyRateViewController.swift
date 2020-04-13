@@ -16,6 +16,9 @@ class CurrencyRateViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectCurrencyView: UIView!
     @IBOutlet weak var currencyLabel: UILabel!
+//    private var errorView: ErrorView = {
+//
+//    }
     
     private let viewModel = CurrencyRateViewModel(service: MockCurrencyRateService())
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
@@ -73,7 +76,7 @@ class CurrencyRateViewController: UIViewController {
     }
 
     @objc func selectCurrencyViewTapped(_ sender: Any) {
-        guard let vc = UIStoryboard.load(.currencyList) as? CurrencyTableViewController else { return }
+        let vc = UIStoryboard.load(fromStoryboard: .currencyList, withType: CurrencyTableViewController.self)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
