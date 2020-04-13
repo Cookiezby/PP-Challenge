@@ -13,7 +13,7 @@ import ReactiveSwift
 class SelectCurrencyViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private let viewModel = SelectCurrencyTableViewModel(service: MockSelectCurrencyService())
+    private let viewModel = SelectCurrencyViewModelImpl(service: MockSelectCurrencyService())
     private let currencies = MutableProperty<[Currency]>([])
     private let errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
     
@@ -21,19 +21,19 @@ class SelectCurrencyViewController: UIViewController {
         super.viewDidLoad()
         setupErrorView()
         setupTableView()
-        bindViewModel()
+        bind(viewModel)
         viewModel.fetchCurrencies()
     }
     
-    func bindViewModel() {
+    func bind(_ viewModel: SelectCurrencyViewModel) {
         currencies <~ viewModel.currencies.signal
-        currencies.signal.observe(on: UIScheduler()).observeValues { [weak self] _ in
+        currencies.signal.disOnMainWith(self).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.errorView.isHidden = true
             self.tableView.reloadData()
         }
         
-        viewModel.error.signal.skipNil().observe(on: UIScheduler()).observeValues { (error) in
+        viewModel.error.signal.skipNil().disOnMainWith(self).observeValues { (error) in
             if let error = error as? APIError {
                 switch error {
                 case .invalidResponse, .networkError:

@@ -21,7 +21,9 @@ protocol CurrencyRateViewModelOutput {
     var currentCurrency: MutableProperty<String?> { get }
 }
 
-class CurrencyRateViewModel: CurrencyRateViewModelInput, CurrencyRateViewModelOutput {
+protocol CurrencyRateViewModel: CurrencyRateViewModelInput & CurrencyRateViewModelOutput {}
+
+class CurrencyRateViewModelImpl: CurrencyRateViewModel {
     private var service: CurrencyRateService
     var error = MutableProperty<Error?>(nil)
     var amount = MutableProperty<Double>(1)

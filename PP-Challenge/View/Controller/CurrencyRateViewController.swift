@@ -16,42 +16,43 @@ class CurrencyRateViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectCurrencyView: UIView!
     @IBOutlet weak var currencyLabel: UILabel!
-    private let viewModel = CurrencyRateViewModel(service: CurrencyRateServiceImpl())
+    private let viewModel = CurrencyRateViewModelImpl(service: CurrencyRateServiceImpl())
     private var errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
     private var currencyRate = MutableProperty<CurrencyRate?>(nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupErrorView()
-        setupButton()
+        setupSelectCurrencyButton()
         setupTextField()
         setupTableView()
-        bind()
+        bind(viewModel)
         viewModel.fetchCurrencyRate()
     }
         
-    func bind() {
-        currencyRate <~ viewModel.currencyRate.signal.skipNil()
-        currencyRate.signal.skipNil().observe(on: UIScheduler()).observeValues { [weak self] (rate) in
+    func bind(_ viewModel: CurrencyRateViewModel) {
+        currencyRate <~ viewModel.currencyRate.signal.skipNil().disOnMainWith(self)
+        
+        currencyRate.signal.skipNil().disOnMainWith(self).observeValues { [weak self] (rate) in
             guard let self = self else { return }
             self.currencyLabel.text = rate.source
             self.errorView.isHidden = true
             self.tableView.reloadData()
         }
         
-        viewModel.amount.signal.skipRepeats().observeValues { [weak self] _ in
+        viewModel.amount.signal.skipRepeats().disOnMainWith(self).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.tableView.reloadData()
         }
         
-        textField.reactive.continuousTextValues.observeValues { [weak self] (value) in
-            guard let self = self else { return }
+        textField.reactive.continuousTextValues.observeValues { (value) in
+
             if let amount = Double(value) {
-                self.viewModel.updateAmount(amount)
+                viewModel.updateAmount(amount)
             }
         }
         
-        viewModel.error.signal.skipNil().observe(on: UIScheduler()).observeValues { [weak self] (error) in
+        viewModel.error.signal.skipNil().disOnMainWith(self).observeValues { [weak self] (error) in
             guard let self = self else { return }
             if let error = error as? APIError {
                 switch error {
@@ -78,7 +79,7 @@ class CurrencyRateViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
     }
     
-    func setupButton() {
+    func setupSelectCurrencyButton() {
         selectCurrencyView.layer.cornerRadius = 4
         selectCurrencyView.layer.applySketchShadow(color: .black, alpha: 0.15, x: 0, y: 1, blur: 7, spread: 0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(selectCurrencyViewTapped(_:)))

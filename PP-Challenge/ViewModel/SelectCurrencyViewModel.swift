@@ -19,7 +19,9 @@ protocol SelectCurrencyViewModelOutput {
     var currencies: MutableProperty<[Currency]> { get }
 }
 
-class SelectCurrencyTableViewModel: SelectCurrencyViewModelOutput, SelectCurrencyViewModelInput {
+protocol SelectCurrencyViewModel: SelectCurrencyViewModelOutput & SelectCurrencyViewModelInput {}
+
+class SelectCurrencyViewModelImpl: SelectCurrencyViewModel {
     private var service: SelectCurrencyService
     var currencies: MutableProperty<[Currency]>
     var error = MutableProperty<Error?>(nil)
