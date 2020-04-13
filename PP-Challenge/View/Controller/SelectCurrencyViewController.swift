@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import ReactiveSwift
+import MBProgressHUD
 
 class SelectCurrencyViewController: UIViewController {
     
@@ -39,6 +40,15 @@ class SelectCurrencyViewController: UIViewController {
                 case .invalidResponse, .networkError:
                     self.errorView.isHidden = false
                 }
+            }
+        }
+        
+        viewModel.hudHidden.signal.disOnMainWith(self).observeValues { [weak self] (hidden) in
+            guard let self = self else { return }
+            if hidden {
+                MBProgressHUD.hide(for: self.view, animated: true)
+            } else {
+                MBProgressHUD.showAdded(to: self.view, animated: true)
             }
         }
     }

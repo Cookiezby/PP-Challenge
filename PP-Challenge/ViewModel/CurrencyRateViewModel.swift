@@ -19,6 +19,7 @@ protocol CurrencyRateViewModelOutput {
     var error: MutableProperty<Error?> { get }
     var currencyRate: MutableProperty<CurrencyRate?> { get }
     var currentCurrency: MutableProperty<String?> { get }
+    var hudHidden: MutableProperty<Bool> { get }
 }
 
 protocol CurrencyRateViewModel: CurrencyRateViewModelInput & CurrencyRateViewModelOutput {}
@@ -30,6 +31,7 @@ class CurrencyRateViewModelImpl: CurrencyRateViewModel {
     var baseRate = MutableProperty<CurrencyRate?>(nil)
     var currencyRate = MutableProperty<CurrencyRate?>(nil)
     var currentCurrency = MutableProperty<String?>(nil)
+    var hudHidden = MutableProperty<Bool>(false)
     
     init(service: CurrencyRateService) {
         self.service = service
@@ -41,8 +43,10 @@ class CurrencyRateViewModelImpl: CurrencyRateViewModel {
     }
     
     func fetchCurrencyRate() {
+        hudHidden.swap(false)
         service.fetchCurrencyBaseRate { [weak self] (result) in
             guard let self = self else { return }
+            self.hudHidden.swap(true)
             switch result {
             case .success(let rate):
                 self.baseRate.swap(rate)

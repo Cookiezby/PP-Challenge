@@ -15,6 +15,7 @@ protocol SelectCurrencyViewModelInput {
 }
 
 protocol SelectCurrencyViewModelOutput {
+    var hudHidden: MutableProperty<Bool> { get }
     var error: MutableProperty<Error?> { get }
     var currencies: MutableProperty<[Currency]> { get }
 }
@@ -25,6 +26,7 @@ class SelectCurrencyViewModelImpl: SelectCurrencyViewModel {
     private var service: SelectCurrencyService
     var currencies: MutableProperty<[Currency]>
     var error = MutableProperty<Error?>(nil)
+    var hudHidden = MutableProperty<Bool>(false)
 
     init(service: SelectCurrencyService) {
         self.service = service
@@ -32,8 +34,10 @@ class SelectCurrencyViewModelImpl: SelectCurrencyViewModel {
     }
     
     func fetchCurrencies() {
+        hudHidden.swap(false)
         service.fetchCurrencies { [weak self] (result) in
             guard let self = self else { return }
+            self.hudHidden.swap(true)
             switch result {
             case .success(let currencies):
                 self.currencies.swap(currencies)

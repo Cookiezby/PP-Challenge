@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import MBProgressHUD
 
 class CurrencyRateViewController: UIViewController {
     
@@ -16,7 +17,7 @@ class CurrencyRateViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var selectCurrencyView: UIView!
     @IBOutlet weak var currencyLabel: UILabel!
-    private let viewModel = CurrencyRateViewModelImpl(service: CurrencyRateServiceImpl())
+    private let viewModel = CurrencyRateViewModelImpl(service: MockCurrencyRateService())
     private var errorView = Bundle.loadView(fromNib: .errorView, withType: ErrorView.self)
     private var currencyRate = MutableProperty<CurrencyRate?>(nil)
     
@@ -57,6 +58,15 @@ class CurrencyRateViewController: UIViewController {
                 case .invalidResponse, .networkError:
                     self.errorView.isHidden = false
                 }
+            }
+        }
+        
+        viewModel.hudHidden.signal.disOnMainWith(self).observeValues { [weak self] (hidden) in
+            guard let self = self else { return }
+            if hidden {
+                MBProgressHUD.hide(for: self.view, animated: true)
+            } else {
+                MBProgressHUD.showAdded(to: self.view, animated: true)
             }
         }
     }
