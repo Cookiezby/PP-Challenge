@@ -9,21 +9,22 @@
 import Foundation
 
 struct CurrencyRate {
-    private(set) var source: String
-    private(set) var quoteDictionary: [String: Double]
-    private(set) var quotes: [Quote]
+    let source: String
+    let quoteDictionary: [String: Double]
+    let quotes: [Quote]
     
     init(source: String, quotes: [String: Double]) {
         self.source = source
         self.quoteDictionary = quotes
-        self.quotes = quotes.map{ Quote(key: $0, value: $1) }
-        self.quotes.sort { $0.key < $1.key }
+        var quoteList = quotes.map{ Quote(key: $0, value: $1) }
+        quoteList.sort { $0.key < $1.key }
+        self.quotes = quoteList
     }
 }
 
 struct Quote {
-    private(set) var key: String
-    private(set) var value: Double
+    let key: String
+    let value: Double
 
     init(key: String, value: Double) {
         self.key = key

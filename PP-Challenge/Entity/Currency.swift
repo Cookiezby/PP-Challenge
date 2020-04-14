@@ -9,8 +9,8 @@
 import Foundation
 
 struct Currency {
-    private(set) var name: String
-    private(set) var detail: String
+    let name: String
+    let detail: String
     
     init(name: String, detail: String) {
         self.name = name
