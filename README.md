@@ -2,6 +2,9 @@
 
 https://github.com/Pay-Baymax/MobileDeveloperChallenge
 
+# Sample Gif
+![Sample](./sample.gif)
+
 ## Functional Requirements:
 - [x] Exchange rates must be fetched from: https://currencylayer.com/documentation  
 - [x] Use free API Access Key for using the API
