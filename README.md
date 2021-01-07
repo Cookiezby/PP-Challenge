@@ -2,7 +2,6 @@
 
 https://github.com/Pay-Baymax/MobileDeveloperChallenge
 
-# Sample Gif
 ![Sample](./sample.gif)
 
 ## Functional Requirements:
